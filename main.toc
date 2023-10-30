@@ -1,0 +1,15 @@
+\babel@toc {russian}{}\relax 
+\contentsline {section}{\numberline {1}Счет углов}{2}{section.1}%
+\contentsline {subsection}{Задачи}{2}{section*.2}%
+\contentsline {section}{\numberline {2}Свойства ортоцентра}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Симметрии ортоцентра}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Остальные свойства ортоцентра}{5}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Окружность Эйлера}{6}{subsection.2.3}%
+\contentsline {subsection}{Задачи}{7}{section*.3}%
+\contentsline {section}{\numberline {3}Известные конструкции}{8}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Прямая Симсона}{8}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Лемма 255}{8}{subsection.3.2}%
+\contentsline {subsection}{Задачи}{8}{section*.4}%
+\contentsline {section}{\numberline {4}Диагонали четырехугольника}{9}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Ортологичные треугольники}{9}{subsection.4.1}%
+\contentsline {subsection}{Задачи}{9}{section*.5}%

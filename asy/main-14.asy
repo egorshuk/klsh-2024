@@ -1,0 +1,46 @@
+if(!settings.multipleView) settings.batchView=false;
+settings.tex="pdflatex";
+settings.inlinetex=true;
+deletepreamble();
+defaultfilename="main-14";
+if(settings.render < 0) settings.render=4;
+settings.outformat="";
+settings.inlineimage=true;
+settings.embed=true;
+settings.toolbar=false;
+viewportmargin=(2,2);
+
+settings.outformat = "pdf";
+import geometry;
+
+size(7cm);
+triangle t = triangleabc(7, 9, 10); draw(t, linewidth(bp));
+circle omega = circle(t);
+
+point H = orthocentercenter(t);
+
+point H_a = foot(t.VA); point H_b = foot(t.VB); point H_c = foot(t.VC);
+point M_a = midpoint(t.BC); point M_b = midpoint(t.AC); point M_c = midpoint(t.AB);
+point T_a = midpoint(segment(H, t.VA)); point T_b = midpoint(segment(H, t.VB)); point T_c = midpoint(segment(H, t.VC));
+
+triangle t_1 = triangle(H_a, H_b, H_c);
+
+draw(segment(t.VA, H_a), grey); draw(segment(t.VB, H_b), grey); draw(segment(t.VC, H_c), grey);
+perpendicularmark(t.AB, altitude(t.VC), deepgreen, size=7); perpendicularmark(t.AC, altitude(t.VB), deepgreen, size=7, quarter=3); perpendicularmark(t.CB, altitude(t.VA), deepgreen, size=7, quarter=4);
+
+draw(segment(t.VA, t.VB), StickIntervalMarker(2, 1, size=6)); draw(segment(t.VA, t.VC), StickIntervalMarker(2, 2, size=6)); draw(segment(t.VC, t.VB), StickIntervalMarker(2, 3, size=6));
+
+draw(segment(t.VA, H), grey, StickIntervalMarker(2, 3, deepgreen, size=4)); draw(segment(H, t.VC), grey, StickIntervalMarker(2, 1, deepgreen, size=4)); draw(segment(H, t.VB), grey, StickIntervalMarker(2, 2, deepgreen, size=4));
+
+draw(Label("$\omega_9$", Relative(0.375)), circle(t_1), brown+dashed+0.8*bp);
+draw(H_a--H_b--H_c--H_a); draw(M_a--M_b--M_c--M_a);
+
+dot(H_a); dot(H_b); dot(H_c);
+dot(M_a); dot(M_b); dot(M_c);
+dot(T_a); dot(T_b); dot(T_c);
+dot(H, filltype=FillDraw(fillpen=deepgreen, drawpen=brown));
+
+dot("$O_9$", circumcenter(t_1), dir(-60), filltype=FillDraw(fillpen=brown, drawpen=deepgreen));
+
+
+//clip(currentpicture, box((-1,-1), (10.5,7)), invisible);
