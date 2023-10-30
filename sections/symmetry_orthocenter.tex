@@ -1,0 +1,123 @@
+Ортоцентр такая особенная точка: симметрии его относительно чего-то чудно связанны с описанной окружностью и наоборот.
+
+\noindent
+\begin{minipage}{0.55\textwidth}
+    \begin{theorem}\thlabel{th:side reflect}
+        Если отразить ортоцентр относительно стороны, то он попадет на описанную окружность.
+    \end{theorem}
+\end{minipage}
+\hspace{0.05\textwidth}
+\begin{minipage}{0.4\textwidth}
+        \begin{asy}
+        size(4.1cm);
+        triangle t = triangleabc(11, 14, 15.5); draw(t, linewidth(bp));
+        circle omega = circle(t); draw(omega);
+        point H = orthocentercenter(t);
+
+        point B_1 = intersectionpoints(altitude(t.VB), omega)[1]; dot(B_1); 
+        point C_1 = intersectionpoints(altitude(t.VC), omega)[0]; dot(C_1);
+
+        point B_2 = foot(t.VB); point C_2 = foot(t.VC); dot(B_2); dot(C_2);
+
+        draw(segment(H, B_1), dashed+grey, StickIntervalMarker(2, 2, size=5));
+        draw(segment(H, C_1), dashed+grey, StickIntervalMarker(2, 1, size=5));
+        
+        dot(H, filltype=FillDraw(fillpen=deepgreen, drawpen=brown));
+    \end{asy}
+\end{minipage}\vspace{0.05\textwidth}
+\begin{minipage}{0.55\textwidth}
+    \begin{theorem}\thlabel{th:middle reflect}
+        Если отразить ортоцентр относительно середины стороны, то он попадет на описанную окружность.
+    \end{theorem}
+    \label{th 2.2}
+\end{minipage}
+\hspace{0.05\textwidth}
+\begin{minipage}{0.4\textwidth}
+    \begin{asy}
+        size(4.1cm);
+        triangle t = triangleabc(9, 10, 12); draw(t, linewidth(bp));
+        point H = orthocentercenter(t);
+        
+        circle Omega = circle(t); draw(Omega);
+        point M_a = midpoint(t.CB); dot(M_a);
+    
+        draw(segment(t.VC, t.VB), linewidth(bp), StickIntervalMarker(2, 1, size=7));
+        
+    
+        point H_a = intersectionpoints(line(H, M_a), Omega)[0]; dot(H_a);
+    
+        draw(segment(H, H_a), dashed, StickIntervalMarker(2,2, size=7));
+        dot(H, filltype=FillDraw(fillpen=deepgreen, drawpen=brown));
+    \end{asy}
+\end{minipage}\vspace{0.05\textwidth}
+\begin{minipage}{0.55\textwidth}
+    \begin{corollary}\thlabel{cor:diametr}
+        Точка из теоремы \ref{th:middle reflect} диаметрально противоположна вершине.
+    \end{corollary}
+\end{minipage}
+\hspace{0.05\textwidth}
+\begin{minipage}{0.4\textwidth}
+    \begin{asy}
+        size(4.1cm);
+        triangle t = triangleabc(10, 9, 12); draw(t, linewidth(bp));
+        point H = orthocentercenter(t);
+        point O = circumcenter(t);
+        
+        circle Omega = circle(t); draw(Omega);
+        point M_a = midpoint(t.CB); dot(M_a);
+    
+        draw(segment(t.VC, t.VB), linewidth(bp), StickIntervalMarker(2, 1, size=7));
+        
+        point H_a = intersectionpoints(line(H, M_a), Omega)[0]; dot(H_a);
+        draw(segment(H, H_a), gray, StickIntervalMarker(2,2, size=7));
+        draw(segment(t.VA, H_a), brown);
+        
+        dot(H, filltype=FillDraw(fillpen=deepgreen, drawpen=brown));
+        dot(O, filltype=FillDraw(fillpen=white, drawpen=black));
+    \end{asy}
+\end{minipage}\vspace{0.05\textwidth}
+\begin{minipage}{0.55\textwidth}
+    \begin{corollary}\thlabel{cor:distance from O}
+        Расстояние от вершины треугольника до ортоцентра в $2$ раза больше расстояния от центра описанной окружности до противолежащей стороны.         
+    \end{corollary}
+\end{minipage}
+\hspace{0.05\textwidth}
+\begin{minipage}{0.4\textwidth}
+    \begin{asy}
+        size(4.1cm);
+        triangle t = triangleabc(7, 11, 10); draw(t, linewidth(bp));
+        circle omega = circle(t); draw(omega);
+        point H = orthocentercenter(t);
+        point O = circumcenter(t);
+        point M = midpoint(t.AB);
+
+        draw(segment(t.VA, t.VB), StickIntervalMarker(2, 2, size=5));
+        perpendicularmark(t.AB, line(O, M), deepgreen, size=5);
+
+        draw(segment(O, M), gray, StickIntervalMarker(1, 1, size=5)); 
+        draw(segment(t.VC, H), gray, StickIntervalMarker(2, 1, size=5));
+        dot(midpoint(segment(t.VC, H)));
+
+        
+        dot(H, filltype=FillDraw(fillpen=deepgreen, drawpen=brown));
+        dot(O, filltype=FillDraw(fillpen=white, drawpen=black));
+    \end{asy}
+\end{minipage}\vspace{0.05\textwidth}
+\begin{minipage}{0.55\textwidth}
+    \begin{lemma}\thlabel{lem:(ABH)}
+        $(ABC) = (ABH)$, т.е. окружности описанные вокруг $\triangle ABC$ и $\triangle ABH$ равны.
+    \end{lemma}
+\end{minipage}
+\hspace{0.05\textwidth}
+\begin{minipage}{0.4\textwidth}
+    \begin{asy}
+        size(4.1cm);
+        triangle t = triangleabc(7, 11, 10); draw(t, linewidth(bp)); 
+        circle abc = circle(t); draw(abc);
+        point H = orthocentercenter(t);
+    
+        dot(H, filltype=FillDraw(fillpen=deepgreen, drawpen=brown));
+    
+        draw(circle(point(t.VC), point(t.VB), H), dashed+brown);
+    \end{asy}
+\end{minipage}

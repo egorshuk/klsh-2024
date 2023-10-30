@@ -1,0 +1,48 @@
+\ProvidesPackage{styles}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[english, russian]{babel}
+\usepackage{amsmath, amsfonts, amssymb, amsthm}
+\usepackage{geometry, graphicx, hyperref, fancyhdr, import, theoremref}
+\usepackage[dvipsnames]{xcolor}
+\graphicspath{{./images/}}
+
+\newgeometry{
+    top = 25mm,
+    bottom = 20mm,
+    left = 20mm,
+    right = 20mm
+}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=blue,
+    pdftitle={Хоровод вокруг перпендикулярных конструкций}
+    pdfauthor={Лунёв Егор}
+}
+
+\pagestyle{fancy}
+
+\fancyhead{} 
+\fancyhead[L]{КЛШ-2024}
+\fancyhead[R]{\color{Brown}{$\sigma_1$} $\perp$ \color{OliveGreen}{$\sigma_2$}}
+
+\fancyfoot{} % clear all footer fields
+\fancyfoot[RO,LE]{\thepage}
+
+\usepackage[inline]{asymptote}
+\begin{asydef}
+    settings.outformat = "pdf";
+    import geometry;
+\end{asydef}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{lemma}[theorem]{Лемма}
+\newtheorem{corollary}{Свойство}[theorem]
+\theoremstyle{definition}
+\newtheorem{definition}{Опеределение}[section]
+
+\newcommand{\task}[2]{\textit{(#1)} #2}

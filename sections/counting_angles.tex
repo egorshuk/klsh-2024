@@ -1,0 +1,33 @@
+Это самое базовое, что можно сделать чтобы доказать перпендикулярность: просто посчитать углы, и из этого вывод о перпендикулярности.
+
+\begin{theorem}\thlabel{th:otrhocenter}
+    Высоты треугольника \textbf{конкурентны}.
+\end{theorem}
+\begin{figure}[ht]
+    \centering
+    \begin{asy}
+        size(6cm);
+        triangle t = triangleabc(9, 10, 11); draw(t, linewidth(bp));
+
+        point H_a = foot(t.VA); point H_b = foot(t.VB); point H_c = foot(t.VC);
+        point H = orthocenter(t);
+
+        draw(segment(t.VA, H_a), grey); draw(segment(t.VB, H_b), grey); draw(segment(t.VC, H_c), grey);
+
+        perpendicularmark(t.AB, line(t.VC, H_c), dashed + deepgreen, size=8);
+        perpendicularmark(t.BC, line(t.VA, H_a), deepgreen, size=7);
+        perpendicularmark(t.AC, line(t.VB, H_b), deepgreen, size=7, quarter=4);
+
+        draw(circle(t.VC, H_a, H_b));
+        draw(H_a--H_b, grey);
+        
+        markangle(n = 1, H_a, H, point(t.VC), radius=10, brown);
+        markangle(n = 1, H_a, H_b, point(t.VC), radius=12, brown);
+
+        clipdraw(circle(t.VA, H_a, H_b));
+
+        markangle(n = 1, H_a, point(t.VB), H_c, radius=14, brown);
+
+        draw(circle(H, H_a, H_c), dashed);
+    \end{asy}
+\end{figure}
