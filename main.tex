@@ -1,0 +1,91 @@
+\documentclass[a5paper, twoside]{article}
+\usepackage{styles}
+
+\begin{document}
+
+\import{./}{titlepage.tex} \newpage
+\thispagestyle{empty}\import{./}{abstract.tex} \newpage
+
+
+\pagenumbering{arabic}
+
+\tableofcontents \pagebreak
+
+\section{Счет углов}
+
+\import{sections/}{counting_angles.tex}
+
+\subsection*{Задачи}
+\addcontentsline{toc}{subsection}{Задачи}
+Было тяжело подобрать задачи, в которых исключительно требуется доказательство перпендикулярности; поэтому тут задачи, которые в целом хорошо делаются счетом углов, а не только на ортогональность.
+
+\import{tasks/}{counting_angles.tex}
+
+\section{Свойства ортоцентра}
+{\begin{minipage}{0.55\textwidth}
+    \begin{definition}\thlabel{def:orthocenter}
+        Ортоцентр (\textbf{H}) -- это точка пересечения высот треугольника.
+    \end{definition}
+    Я буду ортоцентр всегда обозначать зеленой точкой \textit{(просто я так решил)}, а центр описанной окружности выколотой \textit{(так уже более принято)}.
+\end{minipage}
+\hspace{0.05\textwidth}
+\begin{minipage}{0.4\textwidth}
+    \begin{asy}
+        size(4.1cm);
+        triangle t = triangleAbc(70, 7, 11); draw(t, linewidth(bp));
+        point H = orthocentercenter(t);
+
+        draw(segment(t.VA, foot(t.VA)), grey); perpendicularmark(t.BC, line(t.VA, foot(t.VA)), deepgreen, size=5);
+        draw(segment(t.VB, foot(t.VB)), grey); perpendicularmark(t.AC, line(t.VB, foot(t.VB)), deepgreen, quarter=3, size=5);
+        draw(segment(t.VC, foot(t.VC)), grey); perpendicularmark(t.AB, line(t.VC, foot(t.VC)), deepgreen, size=5);
+        
+        dot("$H$", H, dir(24), filltype=FillDraw(fillpen=deepgreen, drawpen=brown));
+    \end{asy}
+\end{minipage}}
+
+\subsection{Симметрии ортоцентра}
+\import{sections/}{symmetry_orthocenter.tex}
+
+\subsection{Остальные свойства ортоцентра}
+\import{sections/}{other_orthocenter.tex}
+
+\subsection{Окружность Эйлера}
+\import{sections/}{euler_circle.tex}
+
+\subsection*{Задачи}
+\addcontentsline{toc}{subsection}{Задачи}
+\import{tasks/}{orthocenter}
+
+\rule{0.96\textwidth}{0.5pt} 
+
+\import{tasks/}{euler_circle.tex}
+
+\section{Известные конструкции}
+
+\subsection{Прямая Симсона}
+
+\import{sections/}{simson_line.tex}
+
+\subsection{Лемма 255}
+
+\import{sections/}{lemma255.tex}
+
+\subsection*{Задачи}
+\addcontentsline{toc}{subsection}{Задачи}
+\import{tasks/}{simson_line.tex}
+
+\rule{\textwidth}{0.5pt} 
+
+\import{tasks/}{lemma255.tex}
+
+\section{Диагонали четырехугольника}
+\subsection{Ортологичные треугольники}
+
+\import{sections/}{diagonals.tex}
+
+\subsection*{Задачи}
+\addcontentsline{toc}{subsection}{Задачи}
+
+\import{tasks/}{diagonals.tex}
+
+\end{document}
