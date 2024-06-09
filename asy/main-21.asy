@@ -12,7 +12,7 @@ viewportmargin=(2,2);
 
 settings.outformat = "pdf";
 import geometry;
-pen hpen = blue+5;
+pen hpen = blue+6;
 
 size(5.5cm);
 point O_1 = (-5, 0); point O_2 = (3, 0); point O_3 = (12, 0);

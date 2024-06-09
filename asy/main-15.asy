@@ -12,7 +12,7 @@ viewportmargin=(2,2);
 
 settings.outformat = "pdf";
 import geometry;
-pen hpen = blue+5;
+pen hpen = blue+6;
 
 size(12.7cm, 10cm);
 triangle t = triangleabc(14.5, 18, 19.5); draw(t, linewidth(bp));
@@ -48,6 +48,6 @@ draw(line(circumcenter(t), H), blue+0.8*bp+dashed);
 dot(centroid(t));
 dot("$O_9$", circumcenter(t_1), dir(0), red);
 dot(circumcenter(t), filltype=FillDraw(fillpen=white, drawpen=black));
-dot(H, blue+5);
+dot(H, hpen);
 
 draw(box((-1,-0.7), (10.5, 6.3)), invisible);

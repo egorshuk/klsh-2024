@@ -12,7 +12,7 @@ viewportmargin=(2,2);
 
 settings.outformat = "pdf";
 import geometry;
-pen hpen = blue+5;
+pen hpen = blue+6;
 
 size(9cm);
 triangle t = triangleabc(9, 10, 11); draw(t, linewidth(bp));
