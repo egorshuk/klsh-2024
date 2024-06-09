@@ -1,0 +1,131 @@
+\documentclass[12pt, oneside]{article}
+\usepackage{ifxetex}
+\ifxetex
+    \usepackage{xltxtra}
+    \defaultfontfeatures{Ligatures=TeX,Mapping=tex-text}
+
+    \setmainfont{Brygada1918}[
+    Path=../fonts/Brygada1918/,
+    Extension = .ttf,
+    UprightFont=*-Regular,
+    BoldFont=*-Bold,
+    ItalicFont=*-Italic,
+    BoldItalicFont=*-BoldItalic
+    ]
+    
+    \setsansfont{Montserrat}[
+    Path=../fonts/Montserrat/,
+    Scale=0.9,
+    Extension = .ttf,
+    UprightFont=*-Medium,
+    BoldFont=*-Bold,
+    ItalicFont=*-MediumItalic,
+    BoldItalicFont=*-BoldItalic
+    ]
+    
+    %\setmonofont{CascadiaCode}[
+    %Path=./fonts/Cascadia/,
+    %Scale=0.85,
+    %Extension = .ttf,
+    %UprightFont=*-Regular,
+    %BoldFont=*-Bold,
+    %ItalicFont=*-Italic,
+    %BoldItalicFont=*-BoldItalic
+    %]
+
+    \setmonofont{Iosevka}[
+        Path=./fonts/Iosevka/,
+        Scale=0.9,
+        Extension = .ttc,
+        UprightFont=*-Regular,
+        BoldFont=*-Bold
+    ]
+    
+    \input{tucyradd.def}
+\else
+    \usepackage[utf8]{inputenc}
+    \usepackage[T2A]{fontenc}
+\fi
+\usepackage[english, russian]{babel}
+\usepackage{geometry}
+\usepackage{multirow, marginnote, hyperref, graphicx, import, enumitem}
+\usepackage[russian, noabbrev]{cleveref}
+\graphicspath{{../images/}}
+\geometry{
+    a4paper,
+    margin = 2cm,
+    footnotesep = 6mm
+}
+\usepackage[table]{xcolor}
+\usepackage[inline]{asymptote}
+\begin{asydef}
+    settings.outformat = "pdf";
+    import geometry;
+\end{asydef}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=red,
+    urlcolor=blue,
+    pdftitle={Паспорт факультатива "Утром на ушку, а вечером строить перпендикуляры"}
+    pdfauthor={Лунёв Егор}
+}
+
+\setlength{\tabcolsep}{10pt}
+\renewcommand{\arraystretch}{1.5}
+\setlength{\arrayrulewidth}{0.3mm}
+\arrayrulecolor{blue!50!black}
+
+\begin{document}
+
+\thispagestyle{empty}
+\import{speech/}{speech_titlepage.tex} 
+\pagebreak
+
+\thispagestyle{empty}
+\import{./}{abstract.tex}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\textwidth]{chelik.png}
+    \label{fig:abstract}
+\end{figure}
+\vfill
+\pagebreak
+
+\setcounter{page}{1}
+\section{Основная информация}
+%\begin{center}
+%    \begin{tabular}{p{0.25\linewidth}|p{0.7\linewidth}}
+%        Тема факультатива & Изучение конструкций, с перпендикулярными прямыми, ев\-кли\-до\-вой геометрии,  применимые в решении олимпиадных задач \\
+%        Цель факультатива & Научить школьников применять конструкции и методы, представленным в факультативе \\
+%    \end{tabular}
+%\end{center}
+
+
+\subsection{Q\&A}
+
+\import{./}{qa.tex}
+
+\subsection{Общий план занятий}
+
+\import{./}{short_plan.tex}
+
+
+\section{Планы занятий по отдельности}
+Опять стремление к \textbf{максимизации}. Только теперь максимизация \textbf{времени решения задач}, для этого я везде давал \textbf{оценку сверху} времени, которое я буду тратить на теорию. Если я буду рассказывать ее быстрее -- замечательно, значит будем дольше решать задачи. 
+
+Для разбора я выделил 10 минут. Этого времени, как мне кажется, должно хватить -- там ведь самые интересные задачи будут, а их не очень много. Если же школьникам потребуется больше времени, то это не проблема -- задачу ведь можно рассказать и вне факультативного времени, если школьник заинтересован...
+
+Также я провел все занятия этого факультатива со средними школьниками, у них были какие-то знаний по предмету, но не было знаний никаких знаний, о какой-либо из рассматриваемых тем. И по результатам этого занятий могу сделать такие выводы:
+
+\begin{enumerate}
+    \item Задач очень много, в основном школьники успевают решать 4-6 задач за урок.
+    \item Для разбора хватает времени, т.к. разбирать первые задачи (простые) -- легко и быстро.
+    \item Для рассказывания теоретического материала тоже хватает времени, даже если не сильно торопиться.
+    \item Очень удобно писать ключевые задачи для урока, чтобы школьники успевали брать самые важные знания.
+    \item Интеракции со школьниками должно быть больше: нужно чаще говорить с ними (как о задачах, так может и простой какой-то small talk). Как только он решил задачу -- слушать их.
+\end{enumerate}
+
+\import{./}{long_plan.tex}
+
+\end{document}

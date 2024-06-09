@@ -1,0 +1,143 @@
+\documentclass[12pt, aspectratio=169]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[english, russian]{babel}
+\usepackage{geometry}
+\usepackage{multirow, marginnote, hyperref, graphicx, import, enumitem, array}
+\graphicspath{{./images/}}
+\newcommand{\task}[2]{\textbf{(#1)} #2}
+
+\usepackage[inline]{asymptote}
+\begin{asydef}
+    settings.outformat = "pdf";
+    import geometry;
+\end{asydef}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=green!60!black,
+    urlcolor=blue,
+    pdftitle={Презентация факультатива "Утром на ушку, а вечером строить перпендикуляры"}
+    pdfauthor={Лунёв Егор}
+}
+
+\setlength{\tabcolsep}{8pt}
+\renewcommand{\arraystretch}{1}
+\setlength{\arrayrulewidth}{0.3mm}
+
+
+\usetheme{Madrid}
+\usecolortheme{seahorse}
+\usefonttheme{default}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{headline}{}
+\setbeamercovered{transparent}
+
+\title[Перпендикулярные конструкции]{Утром на ушку, а вечером строить перпендикуляры}
+\subtitle{Факультатив}
+\date[КЛШ]{14.04.2024}
+\author{Лунёв Егор (\href{https://t.me/egorrshuk}{\texttt{@egorrshuk}})} 
+\logo{\includegraphics[height=1.3cm]{Wrom_dtERac.jpg}}
+
+\begin{document}
+
+\maketitle
+
+\section{Основная информация}
+\begin{frame}{Q\&A}
+    \begin{columns}
+        \column{0.5\linewidth}
+            \begin{itemize}
+                \item<1> Какая тема моего факультатива?
+                \item<2> Какими минимальными знаниями должен обладать школьник?
+                \item<3> Школьников каких классов я жду?
+                \item<4> Какое количество школьников?
+                \item<5> Что мне нужно для занятия?
+            \end{itemize}
+        \column{0.5\linewidth}
+            \only<1>{\textbf{Тема} моего факультатива -- это изучение конструкций, с перпендикулярными прямыми, ев\-кли\-до\-вой \textbf{планиметрии},  применимые в решении \textbf{олимпиадных} задач.}
+            \only<2>{\textbf{Threshold}'ом факультатива являются знания о вписанных четырехугольниках.}
+            \only<3>{Мой факультатив сможет понять любой, нужно лишь знать \textbf{минимум}.}
+            \only<4>{Я жду до \textbf{8-ми} школьников.}
+            \only<5>{Доска \emph{(маркерная)} и маркеры. Возможно распечатать материалы. Возможно проектор.}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Аннотация}
+    \import{./}{abstract.tex}
+\end{frame}
+
+\begin{frame}{Общий план занятий}
+    \begin{table}[ht]
+        \centering
+        \begin{tabular}{|r|p{0.2\linewidth}|p{0.3\linewidth}|p{0.2\linewidth}|}
+            \hline
+            
+            \textbf{№} & \textbf{Темы} & \textbf{Теоретический материал и чепуха} & \textbf{Практический материал} \\
+            
+            \hline
+            
+            1 & Счет углов & Методы счета, вписанные четырехугольники, полезная (!) лемма & \multirow{3}{\linewidth}{Решение задач, помощь в решении задач, разбор задач (по возможности)} \\ \cline{1-3}
+            2 & Свойства ортоцентра и окружность Эйлера & Симметрии ортоцентра и другие свойства, окружность Эйлера и прямая Эйлера  & \\ \cline{1-3}
+            3 & О\-рто\-ди\-а\-го\-на\-ль\-ны\-е четырехугольники & Теорема об ортодиагональных четырехугольниках в отрезках &  \\ \hline
+        \end{tabular}
+    \end{table}
+\end{frame}
+\addtocounter{framenumber}{-1}
+
+\begin{frame}{Общий план занятий}
+    \begin{table}[ht]
+        \centering
+        \begin{tabular}{|r|p{0.2\linewidth}|p{0.3\linewidth}|p{0.22\linewidth}|}
+            \hline
+            \textbf{№} & \textbf{Темы} & \textbf{Теоретический материал и чепуха} & \textbf{Практический материал} \\ \hline
+            4 & Радикальная ось и линия центров & Степень точки, радикальная ось и радикальный центр, их частные случаи. Лемма об ортогональных четырехугольниках & \multirow{3}{\linewidth}{Решение задач, помощь в решении задач, разбор задач (по возможности)} \\ \cline{1-3}  
+            5 & Прямая Симсона & Прямая Симсона и ссылка на точку Микеля &  \\ \cline{1-3}
+            6 & Задача 255 & Лемма 255 и ее внешние случаи. Внешние случаи конструкций с биссектрисами &  \\ \hline
+        \end{tabular}
+    \end{table}
+\end{frame}
+
+\begin{frame}{Пример средней задачи}
+    \begin{columns}
+        \column{0.37\textwidth} 
+        \begin{block}{Задача 6b}
+        \task{Точка Микеля четырехсторонника}{На плоскости даны четыре прямые общего положения. Эти прямые образуют $4$ треугольника. Докажите, что описанные окружности этих треугольников пересекаются в одной точке.} 
+        \end{block}
+        \column{0.55\textwidth}
+        \textbf{Решение:}
+        
+        Пусть на первой прямой лежат точки $A$, $F$ и $B$, на второй $B$, $D$ и $C$, на третьей $C$, $A$ и $E$ и на четвертой $E$, $D$ и $F$. Тогда по задаче {\color{green!60!black}6a} для $\triangle ABC$ и точек $F$, $D$ и $E$:
+        \begin{equation}
+            (AFE) \cap (BFD) \cap (CDE) = M. \label{eq:th:miquel's point 1}
+        \end{equation}
+
+        По задаче {\color{green!60!black}6a} для $\triangle AFE$ и точек $B$, $D$ и $C$:
+        \begin{equation}
+            (ABC) \cap (FBD) \cap (EDC) = G. \label{eq:th:miquel's point 2}
+        \end{equation}
+        
+        Но по утверждениям (\ref{eq:th:miquel's point 1}) и (\ref{eq:th:miquel's point 2}): $G \equiv M$. Отсюда следует, что все нужные окружности пересекаются в одной точке.
+    \end{columns}
+\end{frame}
+
+\begin{frame}{План 6-го занятия}
+    \centering
+    \begin{tabular}{c | p{0.7\linewidth}}                
+        3 минуты & Рассказ о появлении этой задачи, о Игоре Федоровиче Шарыгине, о олимпиаде его имени. \\ [3mm]
+
+        5 минут & Доказательство самой задачи, ссылка на прямую Симсона. \\ [3mm]
+        
+        5 минут & Внешний случай теоремы. Разговор о внешних случаях для биссектрис. \\ [3mm]
+        
+        27 минут & Решение задач, помощь школьникам с решением.\\ [3mm]
+        
+        \textit{10 минут} & Разбор задач по надобности школьников, или по моему желанию. Время которое не потрачено на разбор, будет потрачено на решение задач :)\\ [3mm]
+        
+        \hline 
+        \textbf{50 минут} & \textbf{Конец занятия}
+    \end{tabular}
+\end{frame}
+\end{document}
+
+

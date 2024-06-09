@@ -1,0 +1,153 @@
+\begin{enumerate}
+    \item \task{Лемма Фусса}\label{lem:fuss}{Окружности $\omega_1$ и $\omega_2$ пересекаются в точках $A$ и $B$. Через точку $A$ проведена прямая вторично пересекающая окружность $\omega_1$ в точке $A_1$ и окружность $\omega_2$ в точке $A_2$. Точки $B_1$ и $B_2$ для прямой через точку $B$ определяются аналогично. Докажите, что $A_1B_1 \parallel A_2B_2$.} \wishlisted  
+    
+    \solution{
+        По \cref{lem:concycle} $\angle B_1A_1A = \angle ABB_2 = 180^\circ - \angle B_2A_2A \Rightarrow \angle B_1A_1A_2 + \angle B_2A_2A_1 = 180^\circ \Rightarrow A_1B_1 \parallel A_2B_2.$
+    }
+
+    \item В равнобедренном треугольник $ABC$ $(AB=AC)$ на меньшей дуге $AB$ окружности $(ABC)$ взята точка $D$. На продолжении отрезка $AD$ за точку $D$ выбрана точка $E$ так, что точки $A$ и $E$ лежат по одну сторону относительно прямой $BC$. Окружность $(BDE)$ пересекает прямую $AB$ в точке $F$. Докажите, что $EF \parallel BC$.
+
+    
+    \solution{
+        По \cref{lem:fuss}  $E$ и $F$ -- вторые точки пересечения окружности $(BDE)$ с прямыми $AD$ и $AB$ соответственно. Тогда прямая $EF$ параллельна касательной к $(ABC)$ в точке $A$. И уже эта касательная параллельна $BC$, тогда и $EF$ тоже.
+    }
+
+    \item В трапеции $ABCD$ проведена окружность, проходящая через точки $A$ и $D$. Окружность пересекает боковые стороны $AB$ и $CD$ (или их продолжения) в точках $N$ и $M$ соответственно. Докажите, что если точка пересечения прямых $BM$ и $CN$ равноудалена от точек $A$ и $D$, то она лежит на окружности. \wishlisted
+
+    \solution{
+        $AD \parallel BC$, тогда по обратной \cref{lem:fuss} $NBCM$ -- вписанный. Тогда $\angle BNC = \angle BMC$. \
+
+        По обратной \cref{lem:concycle} для четырехугольников $ANPD$ и $APMD$ $\angle BNC = \angle PDA$ и $\angle BMC = \angle PAD$. Отсюда следует, что треугольник $APD$ -- равнобедренный, а значит $P$ равноудалена от $A$ и $D$.
+    }
+    
+    \item В остроугольном треугольнике $ABC$ на высоте, проведённой из вершины $A$, выбрана точка $P$. Пусть $B_1$ и $C_1$ -- проекции точки $P$ на прямые $AC$ и $AB$ соответственно. 
+    \begin{enumerate}
+        \item Докажите, что точки $B$, $C$, $B_1$, $C_1$ концикличны. \wishlisted\label{lem:projections}
+        
+        \solution{
+            Пусть точка $D$ -- основания высоты из вершины $A$. Тогда $BDPC_1$ и $AC_1PB_1$ -- вписаные четырехугольники. По \cref{lem:concycle} $\angle ABC = \angle APC_1$ и $\angle APC_1 = \angle AB_1C_1$. Тогда по обратной \cref{lem:concycle} $BCC_1B_1$ -- вписанный четырехугольник.
+        }
+        
+        \item Докажите, что отрезок, соединяющий проекции точек $B_1$ и $C_1$, на прямые $AB$ и $AC$ соответственно, параллелен стороне $BC$. \label{lem:3b}
+        
+        \solution{
+            По \cref{lem:projections} $BCC_1B_1$ -- вписанный, а также $B_1C_1C_2B_2$ ($B_1C_1$ -- диаметр). Тогда по \cref{lem:concycle} $\angle ABC = \angle AB_1C_1 = \angle AC_2B_2 \Rightarrow B_2C_2 \parallel BC$.
+        }
+    \end{enumerate}
+
+    \item В остроугольном треугольнике $ABC$ проведена высота $AD$. Пусть точки $K$ и $L$ -- проекции точки $D$ на стороны $AB$ и $AC$ соответственно. Известно, что $\angle BAC = 72^\circ, \angle ABL = 30^\circ$. Чему равен угол $\angle DKC$?
+    
+    \solution{
+        По \cref{lem:projections} $BCLK$ -- вписанный, тогда $\angle ABL =\angle LCK$.
+    
+        $\angle DKC = \angle BDK - \angle DCK$. $\angle BDK = \angle BAD$ (углы при высоте прямоугольного треугольника). 
+        
+        $\angle DCK = \angle ACD - \angle LCK = 90^\circ - \angle CAD - \angle LCK = 90^\circ - \angle CAD - \angle ABL$.
+    
+        $\angle DKC = \angle BAD - 90^\circ + \angle CAD + \angle ABL = \angle BAC + \angle ABL - 90^\circ = 72^\circ + 30^\circ - 90^\circ = 12^\circ$.
+    }
+
+    \item \task{Окружность Тейлора}{Докажите, что шесть точек в виде шести проекций трёх оснований высот треугольника, пересекающих каждую сторону, на две оставшиеся стороны лежат на одной окружности.}
+
+    \solution{
+        Пусть точки $H_a$, $H_b$ и $H_c$ -- основания высот из соответствующих вершин треугольника $ABC$. Пусть $B_a$ и $C_a$ -- проекции точки $H_a$ на прямые $AB$ и $AC$ соответственно. Точки $A_b$, $C_b$, $A_c$ и $B_c$ определяются аналогично. 
+        
+        Тогда по \cref{lem:projections} $BCB_AC_A$ -- вписанный. Тогда по \cref{lem:concycle} $\angle ACB = \angle AC_aB_a$.
+        
+        По \cref{lem:3b} $AB \parallel A_bB_a \Rightarrow \angle AC_aB_a = \angle A_bB_aC_a$, и $AC \parallel A_cC_a \Rightarrow \angle ACB = \angle A_cC_aB$.
+    
+        Тогда по обратной \cref{lem:concycle} $A_cA_bB_aC_a$ -- вписанный. Аналогично $B_aB_cC_bA_b$ и $C_bC_aA_cB_c$ -- вписанные. Тогда и $A_cA_bB_aB_cC_bC_a$ -- вписанный, т.к. точки лежат на сторонах треугольника (строго позже).
+    }
+
+    \item \begin{enumerate}
+        \item \task{Точка Микеля треугольника}{На сторонах $AB$, $BC$ и $AC$ треугольника $ABC$ или их продолжениях, выбраны точки $C_1$, $B_1$ и $A_1$ соответственно. Докажите, что окружности $(AB_1C_1)$, $(A_1BC_1)$ и $(A_1B_1C)$ пересекаются в одной точке.} \wishlisted \label{th:miquel's theorem}
+        
+        \solution{
+            Пусть $(AB_1C_1) \cap (A_1BC_1) = P$. Будем доказывать, что $P \in (A_1B_1C)$. По \cref{lem:concycle} $\angle BC_1P = \angle CA_1P = \angle AB_1P$. Отсюда по обратной \cref{lem:concycle} точки $A_1$, $B_1$, $C$ и $P$ концикличны.
+        }
+        
+        \item \task{Точка Микеля четырехсторонника}{На плоскости даны четыре прямые общего положения. Эти прямые образуют $4$ треугольника. Докажите, что описанные окружности этих треугольников пересекаются в одной точке.} \wishlisted \label{th:miquel's point}
+
+        \solution{
+            Пусть на первой прямой лежат точки $A$, $F$ и $B$, на второй $B$, $D$ и $C$, на третьей $C$, $A$ и $E$ и на четвертой $E$, $D$ и $F$. Тогда по \cref{th:miquel's theorem} для $\triangle ABC$ и точек $F$, $D$ и $E$
+            \begin{equation}
+                (AFE) \cap (BFD) \cap (CDE) = M. \label{eq:th:miquel's point 1}
+            \end{equation}
+    
+            По \cref{th:miquel's theorem} для $\triangle AFE$ и точек $B$, $D$ и $C$
+            \begin{equation}
+                (ABC) \cap (FBD) \cap (EDC) = G. \label{eq:th:miquel's point 2}
+            \end{equation}
+            
+            Но по \cref{eq:th:miquel's point 1,eq:th:miquel's point 2} $G \equiv M$. Отсюда следует, что все нужные окружности пересекаются в одной точке.
+        }
+    \end{enumerate}
+
+    
+    \item В треугольнике $ABC$ точки $B_1$ и $C_1$ -- основания высот, проведенных из вершин $B$ и $C$ соответственно. Точка $D$ -- проекция точки $B_1$ на сторону $AB$, точка $E$ -- пересечения перпендикуляра, опущенного из точки $D$ на сторону $BC$, с отрезком $BB_1$. Докажите, что $EC_1 \perp BB_1$. 
+
+    \solution{
+        Нужно доказать, что $DC_1EB_1$ -- вписанный, тогда утверждение верно. $B_1EFC$ -- вписанный, тогда по \cref{lem:concycle} $\angle B_1CF = \angle B_1ED$. Также $BCC_1B_1$ -- вписанный, тогда, опять же, по \cref{lem:concycle} $\angle BCB_1 = \angle B_1C_1D$. Тогда, раз $\angle B_1ED = \angle B_1ED = \angle B_1C_1D$, то $DC_1EB_1$ -- вписанный.
+    }
+
+    \item На гипотенузе $AC$ прямоугольного треугольника $ABC$ во вне\-шнюю сторону построен квадрат с центром в точке $O$. Докажите, что $BO$ -- биссектриса угла $ABC$. \wishlisted
+
+    \solution{
+        \begin{lemma}\label{lem:conorkite}
+            Если в четырехугольнике $ABCD$, $AC$ -- биссектриса угла $A$ и $BC = CD$, то этот четырехугольник либо вписанный, либо дельтойд.
+        \end{lemma}
+        
+        $ABCO$ -- вписанный, т.к. $\angle B = \angle O = 90^\circ$. $AO = OC$, т.к. это половины диагоналей квадрата. Тогда $BO$ -- биссектриса угла $ABC$.
+    }
+
+    \item В треугольнике $ABC$ угол $A$ равен $60^\circ$. Биссектрисы треугольника $BB_1$ и $CC_1$ пересекаются в точке $I$. Докажите, что $IB_1=IC_1$. \wishlisted
+
+    \solution{
+        \begin{lemma}\label{lem:Iangle}
+            Если в треугольнике $ABC$, точка $I$ -- инцентр, то $$\angle AIC = 90^\circ + \frac{1}{2}\angle ABC$$
+        \end{lemma}
+
+        По \cref{lem:Iangle} $\angle BIC = 90^\circ + \frac 1 2 \angle BAC = 90^\circ + 30^\circ = 120 ^\circ.$ Тогда $AB_1IC_1$ -- вписанный. $AI$ -- биссектриса, поэтому $IB_1 = IC_1.$
+    }
+
+        \item Прямая $\ell$ касается описанной окружности треугольника $ABC$ в точке $B$. Точки $A_1$ и $C_1$ -- проекции точки $P \in \ell$ на прямые $AB$ и $BC$ соответственно. Докажите, что $A_1C_1 \perp AC$. \wishlisted
+
+    \solution{
+        \begin{lemma}
+            Угол между касательной и хордой окружности, равен половине градусной меры дуги, стягиваемой данной хордой.
+        \end{lemma}
+        \begin{corollary}\label{cor:tangentangle}
+            Если к окружности $(ABC)$ провели касательную $BK$, то: $\angle BAC = \angle CBK$.
+        \end{corollary}
+
+        По \cref{cor:tangentangle} $\angle PBA_1 = \angle BAC$. $PC_1BA_1$ -- вписанный, поэтому $\angle PC_1A_1 = \angle PBA_1$.
+
+        $\angle PC_1A_1 + \angle A_1C_1B = 90^\circ = \angle BAC + \angle(AB, A_1C_1) \Rightarrow AC \perp A_1C_1.$
+    }
+
+
+    \item Окружности $\omega_1$ и $\omega_2$ пересекаются в точках $A$ и $B$. Прямая $\ell$ касается окружностей $\omega_1$ и $\omega_2$ в точках $P$ и $Q$ соответственно (точка $B$\footnote{Точка $B$ называется точкой Шалтая треугольника $APQ$.} лежит внутри треугольника $APQ$). Прямая $BP$ вторично пересекает $\omega_2$ в точке $T$. Докажите, что $AQ$ -- биссектриса угла $\angle PAT$. \wishlisted
+
+    \solution{
+        По \cref{cor:tangentangle} для прямой $PQ$ и окружностей $\omega_1$ и $\omega_2$ $\angle BPQ = \angle BAP$ и $\angle BQP = \angle BAQ$. Тогда угол $TBQ = \angle BAQ + \angle BAP = \angle PAQ$ (внешний в треугольнике $BPQ$).
+
+        Так как $BQTA$ -- вписанный, то $\angle TBQ = \angle TAQ = \angle PAQ$. Тогда и получается, что $AQ$ -- биссектриса угла $PAT$.
+    }
+
+    \item Пусть $AA_1$, $BB_1$ и  $CC_1$ -- высоты остроугольного треугольника $ABC$. Докажите, что проекции точки $A_1$ на прямые $AB$, $AC$, $BB_1$, $CC_1$ коллинеарны. \wishlisted
+
+    \solution{
+        Докажем, что проекции на $AB$, $BB_1$ и $CC_1$ коллинеарны. Аналогично будет следовать, что и проекция на $AC$ лежит на этой прямой. Пусть $X$, $Y$ и $Z$ -- проекции на $AB$, $BB_1$ и $CC_1$ соответственно, а $H$ -- ортоцентр. Тогда по \cref{lem:projections,lem:concycle} $\angle BCH = \angle HYZ$. $CH \parallel A_1X$, поэтому $\angle BCH = \angle BA_1X.$ Т.к. $BXYA_1$ -- вписанный, то $\angle BA_1X = \angle BYX$. Получили, что $\angle BYX = \angle HYZ$ -- вертикальные углы, значит $Y \in XZ$.
+    
+    }
+    
+    \item В треугольнике $ABC$ точки $D$ и $E$ -- основания биссектрис из углов $A$ и $C$ соответственно, а точка $I$ -- центр вписанной в треугольник $ABC$ окружности. Точки $P$ и $Q$ -- пересечения прямой $DE$ с $(AIE)$ и $(CID)$ соответственно, причем $P \neq E, Q \neq D$. Докажите, что $\angle EIP = \angle DIQ$.
+
+    \solution{
+        Т.к. $AEPI$ и $CQDI$ -- вписанные, то $\angle PIE = \angle PAE$ и $\angle DIQ = \angle DCQ$. Пусть точка $T$ -- пересечение прямых $AP$ и $CQ$. Тогда нужно доказывать, что $APTC$ -- вписанный.
+
+        Пусть $\angle ABC = 2\beta$, тогда по \cref{lem:Iangle} $\angle AIC = 90^\circ + \frac 1 2 \angle ABC = 90^\circ + \beta$, тогда внешние углы $PIA$ и $DIA$ равны $90^\circ-\beta$. 
+
+        По \cref{lem:concycle} для четырехугольников $AEPI$ и $CQDI$ $\angle PIA = \angle TPQ$ и $\angle DIA = TQP$. Тогда $\angle PTQ = 180^\circ - 2(90^\circ-\beta) = 2\beta = \angle ABC$. Тогда $APTC$ -- вписанный.
+    }
+\end{enumerate}

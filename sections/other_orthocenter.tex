@@ -1,0 +1,112 @@
+\begin{minipage}{0.55\linewidth}
+    \begin{definition}\label{def:incenter}
+        Инцетр -- это центр, вписанной в многоугольник окружности.
+    \end{definition}
+    \begin{definition}\label{def:orthotriangle}
+        Ортотреугольник -- это треугольник, вершины которого являются основаниями высот исходного треугольник.
+    \end{definition}
+    \begin{lemma}\label{lem:H -- incenter orthotriangle}
+        Ортоцентр является инцентром для ортотреугольника.
+    \end{lemma}
+\end{minipage}
+\hspace{0.05\linewidth}
+\begin{minipage}{0.4\linewidth}
+    \begin{asy}
+        size(4.9cm, 4cm);
+        triangle t = triangleAbc(60, 3, 4); draw(t, linewidth(bp));
+        point H = orthocentercenter(t);
+
+        triangle t_1 = pedal(t, H); draw(t_1);
+
+        draw(segment(t.VA, t_1.VA), grey);
+        draw(segment(t.VB, t_1.VB), grey);
+        draw(segment(t.VC, t_1.VC), grey);
+
+        perpendicularmark(t.AB, line(t.VC, t_1.VC), size=7, blue);
+        perpendicularmark(t.CB, line(t.VA, t_1.VA), size=7, blue, quarter=3);
+        perpendicularmark(t.AC, line(t.VB, t_1.VB), size=7, blue, quarter=4);
+
+        markangle(n = 1, point(t.VB), point(t_1.VC), point(t_1.VA), radius=12, red);
+        markangle(n = 1, point(t_1.VB), point(t_1.VC), point(t.VA), radius=10, red);
+
+        markangle(n = 2, point(t.VA), point(t_1.VB), point(t_1.VC), radius=8, red);
+        markangle(n = 2, point(t_1.VA), point(t_1.VB), point(t.VC), radius=10, red);
+
+        markangle(n = 3, point(t.VC), point(t_1.VA), point(t_1.VB), radius=6, red);
+        markangle(n = 3, point(t_1.VC), point(t_1.VA), point(t.VB), radius=4, red);
+    \end{asy}
+\end{minipage}\vspace{0.03\linewidth}
+\begin{minipage}{0.55\linewidth}
+    \begin{corollary}\label{cor:AH perp B1C1}
+        Радиусы описанной окружности, проведённые к вершинам треугольника, перпендикулярны соответствующим сторонам ортотреугольника.
+    \end{corollary}
+\end{minipage}
+\hspace{0.05\linewidth}
+\begin{minipage}{0.4\linewidth}
+    \begin{asy}
+        size(4.9cm, 4cm);
+        triangle t = triangleAbc(60, 6, 7.3); draw(t, linewidth(bp));
+        point O = circumcenter(t);
+        
+        point H_a = foot(t.VA); draw(segment(t.VA, H_a), grey);
+        point H_b = foot(t.VB); draw(segment(t.VB, H_b), grey);
+        draw(segment(H_a, H_b));
+        perpendicularmark(t.CB, line(t.VA, H_a), blue, size=7, quarter=4);
+        perpendicularmark(t.AC, line(t.VB, H_b), blue, size=7, quarter=3);
+
+        draw(segment(t.VC, O), red);
+        perpendicularmark(line(t.VC, O), line(H_a, H_b), dashed+blue, size=7, quarter=3);
+        
+        dot(O, filltype=FillDraw(fillpen=white, drawpen=black));
+    \end{asy}
+\end{minipage}\vspace{0.03\linewidth}
+\begin{minipage}{0.55\linewidth}
+    \begin{lemma}\label{lem:4R^2}
+        Сумма квадратов расстояния от вершины треугольника до ортоцентра и длины стороны, противолежащей этой вершине, равна квадрату диаметра описанной окружности.
+    \end{lemma}
+\end{minipage}
+\hspace{0.05\linewidth}
+\begin{minipage}{0.4\linewidth}
+    \begin{asy}
+        size(4.9cm, 4cm);
+        triangle t = triangleAbc(70, 7, 11); draw(t, linewidth(bp)); label(t);
+        point H = orthocentercenter(t);
+        point O = circumcenter(t);
+
+        draw(segment(t.VA, H));
+        draw(segment(t.VC, O), red);
+
+        dot(H, hpen);
+        dot(O, filltype=FillDraw(fillpen=white, drawpen=black));
+    \end{asy}
+    \vspace{-0.3cm}
+    $$AH^2 + BC^2 = 4 \cdot OC^2$$
+\end{minipage}\vspace{0.03\linewidth}
+\begin{minipage}{0.55\linewidth}
+    \begin{lemma}\label{lem:cos}
+        Если $AA_1$ и $BB_1$ -- высоты треугольника $ABC$, то $\triangle ABC \sim \triangle A_1B_1C, \quad k = \cos \angle C$.
+    \end{lemma}
+\end{minipage}
+\hspace{0.05\linewidth}
+\begin{minipage}{0.4\linewidth}
+    \begin{asy}
+        size(4.9cm, 4cm);
+        triangle t = triangleabc(6, 5, 6.2); draw(t, linewidth(bp)); label(t); 
+        point A_1 = foot(t.VA); point B_1 = foot(t.VB);
+    
+        draw(segment(t.VA, A_1), grey); perpendicularmark(t.BC, line(t.VA, A_1), blue, size=7);
+        draw(segment(t.VB, B_1), grey); perpendicularmark(t.AC, line(t.VB, B_1), blue, size=7, quarter=3);
+
+        draw(segment(A_1, B_1), red);
+        
+        dot("$A_1$", A_1, E+0.5N); dot("$B_1$", B_1, W+0.5N);
+    \end{asy}
+    \iffalse
+    \begin{equation*}
+        \begin{split}
+            &\triangle ABC \sim \triangle A_1B_1C \\
+            &k = \frac{AC}{A_1C_1} = cos \angle C  
+        \end{split}
+    \end{equation*}
+    \fi
+\end{minipage}

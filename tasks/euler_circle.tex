@@ -1,0 +1,115 @@
+\begin{enumerate}[resume*]
+    \item Докажите теорему об окружности девяти точек с помощью леммы о трезубце и внешней леммы о трезубце. %\footnote{Смотрите на ортотреугольник.} 
+
+    \solution{
+        \begin{lemma}[Лемма о трезубце]\label{lem:trillium}
+            В треугольнике $ABC$ точка $I$ -- инцетр, $I_a$ -- эскцентр точки $A$, $L$ -- пересечение отрезка $II_a$ с окружностью $(ABC)$. Тогда $L$ равноудалена от $B$, $C$, $I$, $I_a$.
+        \end{lemma}
+        \begin{lemma}[Внешняя лемма о трезубце]\label{lem:ex_trillium}
+            В треугольнике $ABC$ точка $I_b$ -- эксцентр точки $B$, $I_c$ -- эксцентр точки $C$, $L$ -- пересечение отрезка $I_bI_c$ с окружностью $(ABC)$. Тогда $L$ равноудалена от $B$, $C$, $I_b$, $I_c$.
+        \end{lemma}
+
+        Вспомним, что по \cref{lem:H -- incenter orthotriangle} $H$ -- инцентр ортотреугольника. Также заметим что $A$, $B$, $C$ -- эсцентры ортотреугольника. Тогда по \cref{lem:trillium} середины отрезков, соединяющим ортоцентр с вершинами лежат на описанной окружности ортотреугольника.
+
+        По \cref{lem:ex_trillium} середины сторон треугольника лежат на описанной окружности ортотреугольника.
+    }
+    
+    \item \begin{enumerate} 
+        \item Докажите, что треугольники $ABC$, $HBC$, $AHC$ и $ABH$ имеют общую окружность девяти точек. \wishlisted
+
+        \solution{Для треугольников, содержащих ортоцентр исходного как вершину, стороны -- отрезки от ортоцентр до вершин исходного.}
+        
+        \item Докажите, что прямые Эйлера треугольников $ABC$, $HBC$, $AHC$ и $ABH$ пересекаются в одной точке. 
+
+        \solution{Да, каждая прямая Эйлера содержит в себе центр окружности девяти точек.}
+        
+        \item Докажите, что центры описанных окружностей треугольников $ABC$, $HBC$, $AHC$ и $ABH$ образуют четырехугольник, симметричный четырехугольнику $HABC$. \wishlisted
+
+        \solution{
+            По \cref{th:euler's line ratios} \(O_9H = HO\). Тогда можно сделать центральную симметрию $\mathcal S$ с центром в точке $O_9$.
+                \begin{equation}
+                    \mathcal S: 
+                    \left\{\begin{aligned}
+                        H &\leftrightarrow O \\
+                        A &\leftrightarrow O_a \\
+                        B &\leftrightarrow O_b \\
+                        C &\leftrightarrow O_c
+                    \end{aligned}\right| \Rightarrow \mathcal S: HABC \leftrightarrow OO_aO_bO_c.
+                \end{equation}
+        }
+    \end{enumerate}
+    \item Высоты $BD$ и $CE$ треугольника $ABC$ пересекаются в точке $H$. Продолжения сторон $AB$ и $AC$ пересекают окружность $BHC$ в точках $P$ и $Q$. Докажите, что отрезок $PQ$ в два раза больше отрезка $DE$. \wishlisted
+
+    \solution{
+        \begin{definition} \label{def:homothety}
+            Гомотетией \(\mathcal{H}_O^{k}\) с центром в точке $O$ и коэффициентом $k \neq 0$ называется преобразование плоскости или пространства. Переводящее точку $P$ в точку $P'$, так что \(\overrightarrow{OP'} = k\overrightarrow{OP}\). Свойства гомотетии:
+            \begin{enumerate}
+                \item Это \emph{конформное} преобразование. (сохраняющие углы между кривыми).
+                \item Параллельные прямые переходят в параллельные. \label{cor:homotety}
+                \item Фигуры переходят в подобные.
+            \end{enumerate}
+        \end{definition}
+        Сделаем гомотетию \(\mathcal H_A^{1/2}\).
+        \begin{equation}
+            \mathcal H_A^{1/2}: 
+            \left\{\begin{aligned}
+                 B &\mapsto M_c \\
+                 C &\mapsto M_b \\
+                 H &\mapsto T_a
+            \end{aligned}\right| \Rightarrow (BHC) \mapsto (M_cM_bT_a).
+        \end{equation}
+        $(M_cM_bT_a)$ -- окружность Эйлера $\triangle ABC$. Тогда по \cref{def:euler's circle} \(D, E \in (M_cM_bT_a)\). Образами этих точек были вторые точки пересечения $(BHC)$ с прямыми $AC$ и $AB$, т.е. точки $P$ и $Q$. А значит $PQ \parallel DE$ и $PQ = 2 DE$. 
+    }
+    
+    \item \task{Заключительный этап ВСОШ, 2015, 9.7}{Остроугольный треугольник $ABC$ ($AB < AC$) вписан в окружность $\omega$. Пусть $M$ -- его центроид\footnote{Точка пересечения медиан.}, а $D$ -- основании высоты, опущенной из вершины $A$. Луч $MD$ пересекает $\omega$ в точке $E$. Докажите, что окружность $(BDE)$ касается $AB$.} \wishlisted
+
+    \solution{
+    Пусть $\omega_9$ -- окружность Эйлера треугольника $ABC$, тогда сделаем гомотетию \(\mathcal{H}_M^{-2}\). Очевидно, что $\omega_9$ перейдет в $\omega$, точка $D \in \omega_9$ перейдет в точку $F$ -- пересечение луча $DM$ и $\omega$. По \cref{cor:homotety} прямая $BC$ перейдет в прямую $AF$, параллельную исходной. Тогда четырехугольник $BAFC$ -- равнобокая трапеция, в которой \(\angle ABC = \angle FCB\). А также, т.к. $E\in (BAFC)$, то \(\angle FCB = \angle FEB\), тогда по обратному \cref{cor:tangentangle} $(BDE)$ касается $AB$.
+    }
+    
+    
+    \item \task{Высшая проба, 2013, 9.5}{Пусть $AA_1$, $BB_1$ и $CC_1$ -- высоты остроугольного треугольника $ABC$. На стороне $AB$ выбрана точка $P$ так, что окружность $(PA_1B_1)$ касается стороны $AB$. Найдите $PC_1$, если $PA = 30$ и $PB = 10$.}
+
+    \solution{
+    Пусть точка $D$ -- пересечение прямых $AB$ и $A_1B_1$. Точки $A$, $B$, $A_1$, $B_1$ лежат на одной окружности с диаметром $AB$. Тогда по \cref{th:superpow} \(BD \cdot AD = DA_1 \cdot DA_2\), а также \(DP^2 = DA_1 \cdot DB_1\), отсюда
+    \begin{equation}
+            \left\{\begin{aligned}
+                &BD \cdot AD = DP^2\\
+                &BD = x \\
+                &AD = x + 40\\
+                &DP = x + 10
+            \end{aligned}\right| \Rightarrow x(x+40) = (x+10)^2 \Rightarrow x = 5.
+    \end{equation}
+    Также через точки $A_1$ и $B_1$ проходит окружность Эйлера треугольника $ABC$, которая содержит точку $M$ (середину отрезка $AB$). Можно сказать, что прямая $A_1B_1$ является радикальной осью окружностей $(PA_1B_1)$, $(ABA_1B_1)$ и окружности Эйлера треугольника $ABC$. Опять же по \cref{th:superpow}
+    \begin{equation}
+        \begin{split}
+            &DM \cdot DC_1 = DA_1 \cdot DB_1 = DA \cdot DB = 45 \cdot 5. \\
+            &DC_1 = \frac{45\cdot5}{5 + \frac{10 + 30}{2}} = 9, \quad PC_1 = DP - DC_1 = 15 - 9 = 6.
+        \end{split}    
+    \end{equation}
+    }
+
+    \item Треугольник высекает на своей окружности Эйлера три туги. Докажите, что одна из этих дуг равна сумме двух других. \wishlisted
+
+    \solution{
+        \begin{lemma}\label{lem:sum_of_arcs}
+            Если $\overset{\frown}{AB}$ и $\overset{\frown}{CD}$ -- меньшие дуги окружности $\omega$, тогда если $P$ -- точка пересечения $AC$ и $BD$, то \[\angle APB = \frac{\overset{\frown}{AB} + \overset{\frown}{CD}}{2}.\]
+        \end{lemma}
+        
+        Пусть в треугольнике $ABC$ сторона $BC$ наибольшая. Пусть $M_a$, $M_b$, $M_c$ -- середины сторон $BC$, $AC$, $AB$ треугольника $ABC$, а $H_a$, $H_b$, $H_c$ -- основания высот из соответствующих вершин, все эти точки лежат на окружности Эйлера треугольника $ABC$. По \cref{lem:sum_of_arcs} \(\angle(M_bM_c, H_bH_c) = \frac{\overset{\frown}{M_bH_b} + \overset{\frown}{M_cH_c}}{2}\). 
+        
+        Тогда можно доказывать, что угол $\angle(M_bM_c, H_bH_c)$ равен углу \(M_aM_bH_a = \frac{\overset{\frown}{H_aM_a}}{2}\).
+        \begin{equation}
+            \begin{aligned}
+                \angle(M_bM_c, H_bH_c) &= \angle(BC, H_bH_c)\\     
+                \angle M_aM_bH_a &= \angle(AB, H_aM_b).
+            \end{aligned}
+        \end{equation}
+        
+        Пусть $D$ -- точка пересечения $H_cH_b$ и $BC$, а $E$ -- точка пересечения $AB$ и $M_bH_a$.
+
+        По \cref{lem:projections} $BCH_BH_C$ -- вписанный, тогда по \cref{lem:concycle} \(\varphi = \angle ABC = \angle AH_cH_b = \angle DH_cB\).
+
+        Также в прямоугольном треугольнике $AH_aC$ отрезок $H_aM_b$ -- медиана, тогда \(\angle M_bH_aC = \angle BH_aE= \varphi\). Отсюда следует, что угол \(\angle DH_cE = \angle DH_aE\), значит $DH_cH_aE$ -- вписанный, и углы $H_cDB$ и $H_aEB$ равны, отсюда все следует.
+    }
+\end{enumerate}

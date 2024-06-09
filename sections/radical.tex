@@ -1,0 +1,101 @@
+\begin{theorem}\label{th:radline}
+    Геометрическое место точек \emph{(ГМТ)}, степени которых относительно двух неконцентрических окружностей равны, есть прямая, перпендикулярная линии центров этих окружностей.
+\end{theorem}
+
+\begin{definition}[Радикальная ось]\label{def:radline}
+    Прямая, состоящая из точек, степени которых относительно двух данных окружностей равны, называется радикальной осью этих окружностей.
+\end{definition}
+
+\begin{figure}[ht]
+    \centering
+    \begin{asy}
+        size(12cm, 6cm);
+        point O_1 = (0, 0); point O_2 = (4, 0);
+        circle omega_1 = circle(O_1, 1.5); circle omega_2 = circle(O_2, 1);
+        draw(omega_1); draw(omega_2);
+
+        line ra = radicalline(omega_2, omega_1);
+        point P = point(ra, 0.9);
+
+        line l_1 = tangents(omega_1, P)[1];
+        point T_1 = intersectionpoints(l_1, omega_1)[0]; dot(T_1);
+
+        line l_2 = tangents(omega_2, P)[0];
+        point T_2 = intersectionpoints(l_2, omega_2)[0]; dot(T_2);
+        
+        draw(ra, red);
+        draw(line(O_1, O_2), gray);
+
+        draw(P--T_1, dashed+blue, StickIntervalMarker(1, 1, size=8));
+        draw(P--T_2, dashed+blue, StickIntervalMarker(1, 1, size=8));
+
+        dot("$O_1$", O_1, filltype=FillDraw(fillpen=white, drawpen=black), dir(120)); dot("$O_2$", O_2, filltype=FillDraw(fillpen=white, drawpen=black), dir(60));
+
+        dot(P);
+        perpendicularmark(line(O_1, O_2), ra, blue+dashed, size=8, quarter=1);
+
+        draw(box((-2, -2), (5, 2)), invisible);
+    \end{asy}
+    \caption{Радикальная ось двух окружностей.}
+\end{figure}
+
+\begin{theorem}[Радикальный центр]\label{th:radcenter}
+    Радикальные оси трех окружностей либо конкурентны, либо параллельны.
+\end{theorem}
+\begin{figure}
+    \centering
+        \begin{asy}
+        size(5.5cm);
+        point O_1 = (-1, 0); point O_2 = (3, 0); point O_3 = (0, 2.5);
+        circle omega_1 = circle(O_1, 1.5); circle omega_2 = circle(O_2, 1); circle omega_3 = circle(O_3, 1.6);
+        draw(omega_1, blue); draw(omega_2, blue); draw(omega_3, blue);
+
+        line O1O2 = radicalline(omega_1, omega_2); draw(O1O2, red+dashed);
+        line O1O3 = radicalline(omega_1, omega_3); draw(O1O3, red);
+        line O2O3 = radicalline(omega_3, omega_2); draw(O2O3, red);
+
+
+        dot(radicalcenter(omega_1, omega_2, omega_3), blue+4);
+        
+        draw(box((-3.7, -2), (5, 4.4)), invisible);
+    \end{asy}
+    \hfill   
+    \begin{asy}
+        size(5.5cm);
+        point O_1 = (-5, 0); point O_2 = (3, 0); point O_3 = (12, 0);
+        circle omega_1 = circle(O_1, 3); circle omega_2 = circle(O_2, 2); circle omega_3 = circle(O_3, 4);
+        draw(omega_1, blue); draw(omega_2, blue); draw(omega_3, blue);
+
+        line O1O2 = radicalline(omega_1, omega_2); draw(O1O2, red);
+        line O1O3 = radicalline(omega_1, omega_3); draw(O1O3, red+dashed);
+        line O2O3 = radicalline(omega_3, omega_2); draw(O2O3, red);
+
+        draw(box((0, -10), (2, 8)), invisible);
+    \end{asy}
+    \caption{Радикальный центр трех окружностей.}
+\end{figure}
+
+\newpage
+\begin{theorem}\label{th:deltapow}
+    $AC \perp BD$\footnote{Типа крутая \cref{th:diagonals}}, если $$\pow(B, \omega_a) - \pow(B, \omega_c) = \pow(D, \omega_a) - \pow(D, \omega_c)$$
+\end{theorem}
+\begin{figure}[ht]
+    \centering
+    \begin{asy}
+        size(12cm, 6cm);
+        point A = (-7, 0); point C = (15, 0);
+        circle omega_a = circle(A, 4); circle omega_c = circle(C, 6);
+        draw(Label("$\omega_a$", Relative(0.375)), omega_a, red+dashed+0.8*bp); draw(Label("$\omega_c$", Relative(0.1)), omega_c, blue+dashed+0.8*bp);
+
+        point B = (3, 11); point D = (3, -5);
+        draw(line(A, C), gray);
+        draw(line(B, D), gray);
+
+        draw(A--B--C--D--A);
+
+        perpendicularmark(line(A, C), line(B, D), blue, size=10);
+
+        dot("$A$", A, dir(225)); dot("$C$", C, dir(315));
+        dot("$B$", B, dir(30)); dot("$D$", D, dir(330)); 
+    \end{asy}
+\end{figure}

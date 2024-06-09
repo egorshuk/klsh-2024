@@ -1,0 +1,35 @@
+\begin{theorem}[Лемма 255, Iran Lemma]\label{lem:255}
+    Пусть $M$ и $N$ -- точки касания вписанной окружности со сторонами $AB$ и $BC$ треугольника $ABC$, $P$ -- точка пересечения биссектрисы угла $A$ c прямой $MN$. Докажите, что $\angle APC = 90^\circ$. Докажите, что точка $P$ лежит на средней линии треугольника $ABC$, параллельной стороне $AB$.
+\end{theorem}
+
+\begin{figure}[ht]
+    \centering
+    \begin{asy}
+        size(12cm, 9cm);
+        triangle t = triangleabc(24, 16, 23); draw(t, linewidth(bp)); label(t);
+        circle omega = incircle(t); draw(omega, red);
+        point M = intersectionpoints(omega, t.AB)[0]; 
+        point N = intersectionpoints(omega, t.BC)[0]; 
+        point P = intersectionpoint(line(M, N), bisector(t.VA));
+        draw(M--N, gray); draw(P--point(t.VC)); draw(point(t.VA)--P);
+
+        point M_b = midpoint(t.AC); dot(M_b);
+        point M_a = midpoint(t.CB); dot(M_a);
+
+        draw(M_a--M_b, blue+dashed);
+
+        draw(segment(t.VA, t.VC), StickIntervalMarker(2, 1, size=8));
+        draw(segment(t.VC, t.VB), StickIntervalMarker(2, 2, size=8));
+        
+        markangle(n = 1, P, point(t.VA), point(t.VC), radius=24, red);
+        markangle(n = 1, point(t.VB), point(t.VA), P, radius=20, red);
+
+        perpendicularmark(bisector(t.VA), line(P, t.VB), blue+dashed, size=12, quarter=2);
+        
+        dot("$M$", M, dir(-60));
+        dot("$N$", N, dir(30));
+        dot("$P$", P, dir(-60));
+        dot(incenter(t), filltype=FillDraw(fillpen=white, drawpen=black));
+    \end{asy}
+    \caption{Лемма 255.}
+\end{figure}

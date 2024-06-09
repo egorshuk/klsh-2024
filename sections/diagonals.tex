@@ -1,0 +1,35 @@
+\begin{figure}[ht]
+    \centering
+    \begin{asy}
+        size(6.3cm);
+        point A = (-5, 0); point B = (0, 4);
+        point C = (3, 0); point D = (0, -2);
+        draw(A--B--C--D--A, linewidth(bp));
+
+        draw(A--C, red); draw(B--D, red);
+
+        perpendicularmark(line(A, C), line(B, D), blue+dashed, size=10, quarter=1);
+
+        dot("$A$", A, W); dot("$B$", B, N); dot("$C$", C, E); dot("$D$", D, S);
+        dot(intersectionpoint(line(B, D), line(A, C)));
+    \end{asy}
+    \hfill
+    \begin{asy}
+        size(6.3cm);
+        point A = (-5, 0); point B = (0, 6);
+        point C = (3.5, 0); point D = (0, 2.5);
+        draw(A--B--C--D--A, linewidth(bp));
+
+        point H = intersectionpoint(line(A, C), line(B, D)); dot(H);
+        draw(A--C, red); draw(B--H, red);
+
+        perpendicularmark(line(A, C), line(B, H), blue+dashed, size=10, quarter=2);
+        
+        dot("$A$", A, W); dot("$B$", B, N); dot("$C$", C, E); dot("$D$", D, dir(150));
+    \end{asy}
+    \caption{Ортодиагональные четырёхугольники (выпуклый и невыпуклый).}
+\end{figure}
+
+\begin{theorem}\label{th:diagonals}
+    Диагонали $AC$ и $BD$ четырехугольника $ABCD$ (выпуклого или не выпуклого) перпендикулярны тогда и только тогда, когда $$AB^2 + CD^2 = BC^2 + AD^2.$$
+\end{theorem}

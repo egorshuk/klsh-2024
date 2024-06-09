@@ -1,0 +1,71 @@
+\usepackage{ifxetex}
+\ifxetex
+    \usepackage{xltxtra}
+    \defaultfontfeatures{Ligatures=TeX,Mapping=tex-text}
+
+    \setmainfont{STIXTwoText}[
+        Path=./fonts/stix2-otf/,
+	Extension = .otf,
+        UprightFont=*-Regular,
+        BoldFont=*-Bold,
+        ItalicFont=*-Italic,
+        BoldItalicFont=*-BoldItalic
+    ]
+
+    %\setsansfont{Liberation Sans}
+
+    %\setmonofont{Liberation Mono}
+    
+    %\setmainfont{Brygada1918}[
+    %    Path=./fonts/Brygada1918/,
+    %    Extension = .ttf,
+    %    UprightFont=*-Regular,
+    %    BoldFont=*-Bold,
+    %    ItalicFont=*-Italic,
+    %    BoldItalicFont=*-BoldItalic
+    %]
+    
+    %\setsansfont{Montserrat}[
+    %    Path=./fonts/Montserrat/,
+    %    Scale=0.9,
+    %    Extension = .ttf,
+    %    UprightFont=*-Medium,
+    %    BoldFont=*-Bold,
+    %    ItalicFont=*-MediumItalic,
+    %    BoldItalicFont=*-BoldItalic
+    %]
+
+    \setsansfont{Helvetica}[
+        Path=./fonts/Helvetica/,
+        Scale = 0.9,
+        Extension = .otf,
+        UprightFont=*-Regular,
+        BoldFont=*-Bold,
+        ItalicFont=*-Oblique,
+        BoldItalicFont=*-boldOblique
+    ]
+    
+    \setmonofont{CascadiaCode}[
+        Path=./fonts/Cascadia/,
+        Scale=0.88,
+        Extension = .ttf,
+        UprightFont=*-Regular,
+        BoldFont=*-Bold,
+        ItalicFont=*-Italic,
+        BoldItalicFont=*-BoldItalic
+    ]
+
+    %\setmonofont{Iosevka}[
+    %    Path=./fonts/Iosevka/,
+    %    Scale=0.95,
+    %    Extension = .ttc,
+    %    UprightFont=*-Regular,
+    %    BoldFont=*-Bold
+    %]
+    
+    \import{./}{tucyradd.def}
+\else
+    \usepackage[utf8]{inputenc}
+    \usepackage[T2A]{fontenc}
+\fi
+

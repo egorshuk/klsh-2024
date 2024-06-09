@@ -1,0 +1,62 @@
+\noindent Это самое базовое, что можно сделать, чтобы доказать перпендикулярность: просто посчитать углы, и из этого сделать вывод (какой-то угол будет равен $90^\circ$).
+\begin{theorem}\label{th:otrhocenter}
+    Высоты треугольника \emph{конкурентны\footnote{Пересекаются в одной точке.}}.
+\end{theorem}
+\begin{figure}[ht]
+    \centering
+    \begin{asy}
+        size(9cm);
+        triangle t = triangleabc(9, 10, 11); draw(t, linewidth(bp));
+
+        point H_a = foot(t.VA); point H_b = foot(t.VB); point H_c = foot(t.VC);
+        point H = orthocenter(t);
+
+        draw(segment(t.VA, H_a), grey); draw(segment(t.VB, H_b), grey); draw(segment(t.VC, H_c), grey);
+
+        perpendicularmark(t.AB, line(t.VC, H_c), dashed + blue, size=10);
+        perpendicularmark(t.BC, line(t.VA, H_a), blue, size=10, quarter=1);
+        perpendicularmark(t.AC, line(t.VB, H_b), blue, size=10, quarter=3);
+
+        draw(circle(t.VC, H_a, H_b));
+        draw(H_a--H_b, grey);
+        
+        markangle(n = 1, H_a, H, point(t.VC), radius=12, red);
+        markangle(n = 1, H_a, H_b, point(t.VC), radius=14, red);
+
+        clipdraw(circle(t.VA, H_a, H_b));
+
+        //draw(arc(circle(t.VA, H_a, H_b), -5, 185));
+
+        markangle(n = 1, H_a, point(t.VB), H_c, radius=16, red);
+
+        draw(circle(H, H_a, H_c), dashed+red+bp*0.7);
+    \end{asy}
+\end{figure}
+
+\noindent
+\begin{minipage}{0.65\linewidth}
+    \begin{lemma}\label{lem:concycle}
+        Четырехугольник $ABCD$ является вписанным, если $\angle ABC$ равен смежному углу $\angle ADC$.
+    \end{lemma}
+\end{minipage}
+\hspace{0.05\linewidth}
+\begin{minipage}{0.3\linewidth}
+    \begin{asy}
+        size(3.5cm);
+        point O = (0, 0);
+        circle omega = circle(O, 1); draw(omega);
+
+        point A = angpoint(omega, 210);
+        point B = angpoint(omega, 100);
+        point C = angpoint(omega, 15);
+        point D = angpoint(omega, 320);
+
+        point P = intersectionpoints(circle(B, 2), line(A, B))[0];
+        
+        draw(P--A--B--C--D--A);
+        markangle(n = 1, line(B, A), line(A, D), radius=12, red+dashed);
+        markangle(n = 1, B, C, D, radius=14, red);
+
+        markangle(n = 2, D, A, B, radius=14, blue);
+    \end{asy}
+\end{minipage}

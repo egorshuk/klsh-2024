@@ -1,8 +1,8 @@
-.aux
-.fdb_latexmk
-.fls
-.log
-.out
-.pre
-.toc
-.xdv
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.pre
+*.toc
+*.xdv

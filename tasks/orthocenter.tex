@@ -1,0 +1,33 @@
+\begin{enumerate}[resume*]
+    \item В треугольнике $ABC$ проведены высоты $BB_1$ и $CC_1$, а также отмечена точка $M$ -- середина стороны $BC$. Точка $H$ -- его ортоцентр, а точка $P$ -- пересечения луча \texttt{(!)} $MH$ с окружностью $(ABC)$. Докажите, что точки $P, A, B_1, C_1$  концикличны. \wishlisted
+
+    \solution{
+        Отметим вторую точку пересечения $Q$ окружности $(ABC)$ с прямой $MH$. Тогда по \cref{cor:diametr} AQ -- диаметр, а значит $\angle APQ = 90^\circ$. Тогда $P$, $A$, $C_1$, $B_1$, $H$ концикличны, т.к. лежат на окружности с диаметром $AH$.
+    }
+
+    \item Во вписанном четырехугольнике $ABCD$ точка $P$ -- точка пересечения диагоналей $AC$ и $BD$. Точка $O$ -- центр окружности $(ABP)$. Докажите, что $OP \perp CD$. \wishlisted
+
+    \solution{
+        Т.к. $ABCD$ -- вписанный, то $\triangle BAP \sim \triangle CPD$ (по двум углам). Тогда если $O_1$ -- центр окружности $(CPD)$, то $\angle APO = \angle DPO_1$.
+        
+        По \cref{th:OHisogonal} в треугольнике $CPD$, если $H_1$ -- его ортоцентр, $\angle DPO_1 = \angle CPH_1$. Тогда точки $O$, $P$, $H$ -- коллинеарны, т.к. $\angle CPH = \angle APO$ (вертикальные). А значит $OP \equiv PH \perp CD$. 
+    }
+    
+    \item \task{Муниципальный этап ВСОШ (Москва), 2020, 9.4}{Пусть точки $B$ и $C$ лежат на по\-лу\-окруж\-но\-сти с диаметром $AD$. Точка $M$ -- середина отрезка $BC$. Точка $N$ такова, что точка $M$ -- середина отрезка $AN$, докажите что $BC \perp ND$}. \wishlisted
+
+    \solution{
+        $ABNC$ -- параллелограмм. Тогда раз $AD$ -- диаметр, то $AB \perp BD$ и $AC \perp CD$. Но $AB \parallel CN$ и $AC \parallel BN$. Тогда $BD \perp CN$ и $CD \perp BN$. Значит $C$ -- ортоцентр треугольника $BND$, а значит $BC \perp ND$.
+    }
+
+    \item В треугольнике $ABC$ проведена высота $AD$ и отмечен центр описанной окружности -- $O$. Пусть точки $E$ и $F$ -- проекции точек $B$ и $C$ на прямую $AO$. $N$ -- точка пересечения прямых $AC$ и $DE$, а $M$ -- точка пересечения прямых $AB$ и $DF$. Докажите, что точки $A, D, N, M$ концикличны.
+
+    \solution{
+        Пусть точка $A'$ -- диаметрально противоположна $A$. Тогда $ACA' = \angle ABA' = 90^\circ$, отсюда $\angle CA'A = \angle ACF$ и $\angle BA'A = \angle ABE$. Т.к. $ABDE$ и $ADFC$ -- вписанные и по \cref{lem:concycle} $\angle ABE = \angle ADN$ и $\angle ACF = \angle ADM$. Тогда $\angle NDM = \angle BA'C$, а значит $ADNM$ -- вписанный, раз $ABA'C$ был вписанным. 
+    }
+    
+    \item \task{Baltic Way, 2019, problem 12}{Let $ABC$ be a triangle and $H$ its orthocenter. Let $D$ be a point lying on the segment $AC$ and let $E$ be the point on the line $BC$ such that $BC \perp DE$. Prove that $EH \perp BD$ if and only if $BD$ bisects $AE$}. \wishlisted
+
+    \solution{
+        Докажем в одну сторону, что если $BD$ разделила $AE$ пополам, то $EH \perp BD$. Пусть $X$ -- точка пересечения $AH$ и $DE$ Тогда раз $AH\equiv AX\perp BC \land DE \perp BC \Rightarrow AH \parallel DE$ и $BD\equiv XB$ делит $AE$ пополам, то значит $AXED$ -- параллелограмм, отсюда $XE \parallel AD$.  А раз $XE \parallel AD \land AD \perp BH$, значит $X$ -- ортоцентр треугольника $BHE$, а значит $BX\equiv BD\perp EH$.  
+    }
+\end{enumerate}

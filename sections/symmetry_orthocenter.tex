@@ -1,0 +1,167 @@
+Ортоцентр -- это такая особенная точка: конструкции, в которых используются его \textbf{симметрии} относительно чего-либо, \textbf{замечательно} связанны с описанной окружностью, и наоборот!
+
+\noindent
+\begin{minipage}{0.55\textwidth}
+    \begin{theorem}\label{th:side reflect}
+        Если отразить ортоцентр относительно стороны, то он попадет на описанную окружность.
+    \end{theorem}
+\end{minipage}
+\hspace{0.05\textwidth}
+\begin{minipage}{0.4\textwidth}
+    \begin{asy}
+        size(5cm, 4cm);
+        triangle t = triangleabc(11.1, 12.3, 11); draw(t, linewidth(bp));
+        circle omega = circle(t); draw(omega);
+        point H = orthocentercenter(t);
+
+        point B_1 = intersectionpoints(altitude(t.VB), omega)[1]; 
+        point A_1 = intersectionpoints(altitude(t.VA), omega)[1];
+
+        point B_2 = foot(t.VB); point A_2 = foot(t.VA);
+
+        draw(segment(H, B_1), dashed+red, StickIntervalMarker(2, 2, size=5));
+        draw(segment(H, A_1), dashed+red, StickIntervalMarker(2, 1, size=5));
+
+        perpendicularmark(t.AC, line(H, B_1), size=8, quarter=3, blue);
+        perpendicularmark(t.BC, line(H, A_1), size=7, quarter=2, blue);
+        
+        dot(B_2); dot(A_2); dot(B_1); dot(A_1);
+        dot(H, hpen);
+
+        //draw(box((-2, 0), (14, 10.5)), invisible);
+    \end{asy}
+\end{minipage}\vspace{0.03\textwidth}
+\begin{minipage}{0.55\textwidth}
+    \begin{theorem}\label{th:middle reflect}
+        Если ортоцентр отразить относительно середины стороны, то он попадет на описанную окружность.
+    \end{theorem}
+    \label{th 2.2}
+\end{minipage}
+\hspace{0.05\textwidth}
+\begin{minipage}{0.4\textwidth}
+    \begin{asy}
+        size(5cm, 4cm);
+        triangle t = triangleabc(9.6, 10.8, 12); draw(t, linewidth(bp));
+        point H = orthocentercenter(t);
+        
+        circle Omega = circle(t); draw(Omega);
+        point M_a = midpoint(t.CB);
+    
+        draw(segment(t.VC, t.VB), linewidth(bp), StickIntervalMarker(2, 1, size=7));
+        
+    
+        point H_a = intersectionpoints(line(H, M_a), Omega)[0];
+
+        dot(M_a); dot(H_a);
+        draw(segment(H, H_a), red+dashed, StickIntervalMarker(2,2, size=7));
+        dot(H, hpen);
+
+        //draw(box((-1, -1), (13, 11)), invisible);
+    \end{asy}
+\end{minipage}\vspace{0.03\textwidth}
+\begin{minipage}{0.55\textwidth}
+    \begin{corollary}\label{cor:diametr}
+        Точка из теоремы \ref{th:middle reflect} диаметрально противоположна противолежащей стороне вершине.
+    \end{corollary}
+\end{minipage}
+\hspace{0.05\textwidth}
+\begin{minipage}{0.4\textwidth}
+    \begin{asy}
+        size(5cm, 4cm);
+        triangle t = triangleabc(11.8, 14, 11); draw(t, linewidth(bp)); 
+        point H = orthocentercenter(t);
+        point O = circumcenter(t);
+        
+        circle Omega = circle(t); draw(Omega);
+        point M_a = midpoint(t.CB);
+    
+        draw(segment(t.VC, t.VB), linewidth(bp), StickIntervalMarker(2, 1, size=7));
+        
+        point H_a = intersectionpoints(line(H, M_a), Omega)[1];
+        draw(segment(H, H_a), gray, StickIntervalMarker(2,2, size=7));
+        draw(segment(t.VA, H_a), red);
+
+        dot(H_a); dot(M_a);
+        dot(H, hpen);
+        dot(O, filltype=FillDraw(fillpen=white, drawpen=black));
+
+        //draw(box((-2, -1), (13, 12)), invisible);
+    \end{asy}
+\end{minipage}\vspace{0.03\textwidth}
+\begin{minipage}{0.55\textwidth}
+    \begin{corollary}\label{cor:distance from O}
+        Расстояние от вершины треугольника до ортоцентра в $2$ раза больше расстояния от центра описанной окружности до противолежащей стороны.         
+    \end{corollary}
+\end{minipage}
+\hspace{0.05\textwidth}
+\begin{minipage}{0.4\textwidth}
+    \begin{asy}
+        size(5cm, 4cm);
+        triangle t = triangleabc(9.5, 12.5, 12.2); draw(t, linewidth(bp));
+        circle omega = circle(t); 
+        point H = orthocentercenter(t);
+        point O = circumcenter(t);
+        point M = midpoint(t.AB);
+
+        draw(segment(t.VA, t.VB), StickIntervalMarker(2, 2, size=5));
+        perpendicularmark(t.AB, line(O, M), blue, size=5);
+
+        draw(segment(O, M), gray, StickIntervalMarker(1, 1, size=5)); 
+        draw(segment(t.VC, H), red, StickIntervalMarker(2, 1, size=5));
+        dot(midpoint(segment(t.VC, H)));
+
+        
+        dot(H, hpen);
+        dot(O, filltype=FillDraw(fillpen=white, drawpen=black));
+    \end{asy}
+\end{minipage}\vspace{0.03\textwidth}
+\begin{minipage}{0.55\textwidth}
+    \begin{lemma}[Окружность Джонсона]\label{lem:(ABH)}
+        $(ABC) = (ABH)$, т.е. окружности, описанные вокруг $\triangle ABC$ и $\triangle ABH$ равны.
+    \end{lemma}
+\end{minipage}
+\hspace{0.05\textwidth}
+\begin{minipage}{0.4\textwidth}
+    \begin{asy}
+        size(5cm, 4cm);
+        triangle t = triangleabc(9, 11, 10); draw(t, linewidth(bp)); 
+        circle abc = circle(t); draw(abc);
+        point H = orthocentercenter(t);
+    
+        draw(circle(point(t.VC), point(t.VB), H), dashed+red);
+        dot(H, hpen);
+    \end{asy}
+\end{minipage}\vspace{0.03\textwidth}
+\begin{minipage}{0.55\textwidth}
+    \begin{definition}[Изогональное сопряжение\setcounter{footnote}{0}\footnotemark]\label{def:isogonal}
+        Точки $P$, $Q$ называются изогонально сопряженными, если $\angle PAB = \angle QAC$, $\angle PBC = \angle QBA$, $\angle PCB = \angle QCA$.
+    \end{definition}
+    \begin{theorem}\label{th:OHisogonal}
+        Ортоцентр и центр описанной окружности изогонально сопряжены.
+    \end{theorem}
+\end{minipage}
+\footnotetext{Можно думать об изогональном сопряжении, как о симметрии относительно биссектрисы.}
+\hspace{0.05\textwidth}
+\begin{minipage}{0.4\textwidth}
+    \begin{asy}
+        size(5cm, 4cm);
+        triangle t = triangleabc(11, 9, 12); draw(t, linewidth(bp));
+        point H = orthocentercenter(t);
+        point O = circumcenter(t);
+
+        draw(segment(t.VA, H));
+        draw(segment(t.VA, O));
+
+        draw(segment(t.VC, H));
+        draw(segment(t.VC, O));
+
+        markangle(n = 1, line(t.AB), line(t.VA, O), radius=35, red);
+        markangle(n = 1, line(t.VA, H), line(t.AC), radius=30, red+dashed);
+
+        markangle(n = 2, line(t.VC, O), line(t.BC), radius=30, dashed+blue);
+        markangle(n = 2, rotate(180)*line(t.AC), line(t.VC, H), radius=30, blue);
+
+        dot(H, hpen);
+        dot(O, filltype=FillDraw(fillpen=white, drawpen=black));
+    \end{asy}
+\end{minipage}
