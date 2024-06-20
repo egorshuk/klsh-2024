@@ -7,7 +7,8 @@
         В четырехугольнике $ABCH$ $BH\perp AC$, значит
         \begin{equation}\label{eq:26.1}
             AB^2 + CH^2 = BC^2 + AH^2.
-        \end{equation} Также в этом четырехугольнике $CH \perp AB$, значит 
+        \end{equation}
+        Также в этом четырехугольнике $CH \perp AB$, значит 
         
         \begin{equation}\label{eq:26.2}
             AC^2 + BH^2 = BC^2 + AH^2.
@@ -20,12 +21,58 @@
     }
 
     \item \task{Муниципальный этап ВСОШ (Москва), 2020, 9.4}{Пусть точки $B$ и $C$ лежат на по\-лу\-окруж\-но\-сти с диаметром $AD$. Точка $M$ -- середина отрезка $BC$. Точка $N$ такова, что точка $M$ -- середина отрезка $AN$, докажите что $BC \perp ND$}. 
+
+    \solution{
+        \begin{theorem}[Пифагора]\label{th:pythagorean}
+            В прямоугольном треугольник $ABC$ ($C$ -- прямой) \[AC^2 + BC^2 = AB^2\] 
+        \end{theorem}
+
+        $ABNC$ -- параллелограмм. Тогда раз AD -- диаметр, то \(AB \perp BD \) и \(AC \perp CD \). Применим теорему \labelcref{th:pythagorean} для треугольников $ABD$ и $ACD$.
+
+        \begin{equation}\label{eq:28.1}
+            AB^2 + BD^2 = AD^2.
+        \end{equation}
+
+        \begin{equation}\label{eq:28.2}
+            AC^2 + CD^2 = AD^2.
+        \end{equation}
+
+        Тогда по \cref{eq:28.1,eq:28.2}
+
+        \begin{equation}\label{eq:28.3}
+            AC^2 + CD^2 = AB^2 + BD^2.
+        \end{equation}
+
+        По \cref{th:diagonals} \(BC \perp ND \Leftrightarrow BN^2 + CD^2 = BD^2 + NC^2\). 
+        Т.к. $ABNC$ -- параллелограмм, то \(AB = NC\) и \(AC = BN\). Подставляем в \cref{eq:28.3}, получаем то, что нужно.
+    }
     
     \item \task{Baltic Way, 2019, problem 13}{Let $ABCDEF$ be a convex hexagon in which $AB = AF$, $BC = CD$, $DE = EF$ and $\angle ABC = \angle EFA = 90^\circ$. Prove that $AD \perp CE$}. \wishlisted
 
     \item \begin{enumerate}
-        \item \task{Теорема Штейнера}{Пусть $ABC$ и $A_1B_1C_1$ — невырожденные треугольники. Докажите, что перпендикуляры, опущенные из точек $A_1$, $B_1$, $C_1$ на прямые $BC$, $AC$, $AB$ пересекаются в одной точке тогда и только тогда, когда $$C_1A^2 + A_1B^2 + B_1C^2 = C_1B^2 + B_1A^2 + A_1C^2.$$} 
+            \item \task{Теорема Штейнера}\label{th:shtainer}{Пусть $ABC$ и $A_1B_1C_1$ — невырожденные треугольники. Докажите, что перпендикуляры, опущенные из точек $A_1$, $B_1$, $C_1$ на прямые $BC$, $AC$, $AB$ пересекаются в одной точке тогда и только тогда, когда $$C_1A^2 + A_1B^2 + B_1C^2 = C_1B^2 + B_1A^2 + A_1C^2.$$} 
+
+        \solution{
+            Предположем, что перпендикуляры пересеклись в одной точке $M$. Тогда для каждого четырехугольника $AC_1BM$, $BA_1CM$, $CB_1AM$ выполняется теорема \labelcref{th:diagonals}.
+            \begin{equation}
+                    \begin{cases}
+                        C_1A^2 + BM^2 &= C_1B^2 + AM^2 \\
+                        A_1B^2 + CM^2 &= A_1C^2 + BM^2 \\
+                        B_1C^2 + AM^2 &= B_1A^2 + CM^2
+                    \end{cases}
+            \end{equation}
+
+            Вычитанием одинаковых слагаемых нужного следующего уравнения.
+            \begin{equation}
+                C_1A^2 + A_1B^2 + B_1C^2 = C_1B^2 + B_1A^2 + A_1C^2.
+            \end{equation}
+        }
+
         \item Докажите, что если перпендикуляры, опущенные из точек $A_1$, $B_1$, $C_1$ на прямые $BC$, $AC$, $AB$ пересекаются в одной точке, то и перпендикуляры, опущенные из точек $A$, $B$, $C$ на прямые $B_1C_1$, $A_1C_1$, $A_1B_1$ тоже.\footnote{Треугольники $ABC$ и $A_1B_1C_1$ из задачи называют ортологичными. Пишут $\triangle ABC \perp \triangle A_1B_1C_1$. При этом точки пересечения соответствующих перпендикуляров называют центрами ортологии.} \wishlisted
+
+        \solution{
+            Заметим, что при преобразовании \(S: x \leftrightarrow x_1\) уравнение из теоремы \labelcref{th:shtainer} переходит в себя.
+        }
     \end{enumerate}
 
     \item \task{Теорема об изогональном сопряжении}{Чевианы $AA_1$, $BB_1$, $CC_1$ треугольника $ABC$ пересекаются в одной точке. Докажите, что чевианы, симметричные им относительно биссектрис соответствующих углов, тоже пересекаются в одной точке. \setcounter{footnote}{1}\footnote{Рассмотрите педальный треугольник этой точки.}} \wishlisted
