@@ -1,4 +1,6 @@
 asy/
+radioheadtable.tex
+solution.pdf
 *.aux
 *.fdb_latexmk
 *.fls
@@ -7,5 +9,3 @@ asy/
 *.pre
 *.toc
 *.xdv
-radioheadtable.tex
-solution.pdf
