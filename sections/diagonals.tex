@@ -20,12 +20,12 @@
         point C = (3.5, 0); point D = (0, 2.5);
         draw(A--B--C--D--A, linewidth(bp));
 
-        point H = intersectionpoint(line(A, C), line(B, D)); dot(H);
+        point H = intersectionpoint(line(A, C), line(B, D)); 
         draw(A--C, red); draw(B--H, red);
 
         perpendicularmark(line(A, C), line(B, H), blue+dashed, size=10, quarter=2);
         
-        dot("$A$", A, W); dot("$B$", B, N); dot("$C$", C, E); dot("$D$", D, dir(150));
+        dot("$A$", A, W); dot("$B$", B, N); dot("$C$", C, E); dot("$D$", D, dir(150)); dot(H);
     \end{asy}
     \caption{Ортодиагональные четырёхугольники (выпуклый и невыпуклый).}
 \end{figure}
