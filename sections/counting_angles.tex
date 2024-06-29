@@ -9,7 +9,7 @@
         triangle t = triangleabc(9, 10, 11); draw(t, linewidth(bp));
 
         point H_a = foot(t.VA); point H_b = foot(t.VB); point H_c = foot(t.VC);
-        point H = orthocenter(t);
+        point H = orthocentercenter(t);
 
         draw(segment(t.VA, H_a), grey); draw(segment(t.VB, H_b), grey); draw(segment(t.VC, H_c), grey);
 
