@@ -88,9 +88,41 @@
         }
 
     \item Пусть точки $P$ и $Q$ -- изогонально сопряженные точки треугольника $ABC$. $B_p$, $C_p$ и $B_q$, $C_q$ -- перпендикуляры из $P$ и $Q$ на прямые $AC$ и $AB$ соответственно. \begin{enumerate}
-        \item Докажите, что треугольники $PB_pC_p$ и $QB_qC_q$ подобны.
-        \item Докажите, что вершины педальных треугольников изогонально сопряженных точек лежат на одной окружности. Найдите её центр. \wishlisted
+        \item\label{lem:31a} Докажите, что треугольники $PB_pC_p$ и $QB_qC_q$ подобны.
+
+            \solution{
+                Пусть $\angle BAP = \angle CAQ = \alpha$, а $\angle BAQ = \angle CAP = \beta$. 
+                Четырехугольники $AB_pPC_p$ и $AB_qQC_q$ -- вписанные (два прямых угла). 
+                Поэтому $\angle C_pAP = \angle PB_pC_p = \alpha$ и $\angle PAB_p = \angle PC_pB_p = \beta$.
+                Также $\angle C_qAQ = \angle QB_qC_q = \alpha$ и $\angle  QAB_q = \angle QC_qB_q = \beta$.
+
+                Так и получается, что в треугольниках $PB_pC_p$ и $QC_qB_q$ есть два равных угла $\alpha$ и $\beta$.
+            }
+        \item Докажите, что вершины педальных треугольников изогонально сопряженных точек лежат на одной окружности. Найдите её центр.\label{th:pedalcircle} \wishlisted
+
+            \solution{
+                По \cref{lem:31a} $\triangle PB_pC_p \sim \triangle QC_qB_q$. Значит $\angle AB_pC_p = 90^\circ - \angle PB_pC_p = 90^\circ - \angle QC_qB_q = \angle C_pC_qQ$, отсюда следует, что $C_pC_qB_qB_p$ -- вписанный.
+                Аналогично и $B_pB_qA_qA_p$, и $A_pB_pC_qC_p$ -- тоже вписанный.
+                
+                \begin{lemma}\label{lem:3consycle}
+                    Если на сторонах треугольника $ABC$ выбраны точки $ A_1, A_2, B_1 ,B_2 , C_1 ,C_2$.
+                    Так, что $A_1A_2B_1B_2$, $A_1A_2C_1C_2$ и $B_1B_2C_1C_2$ -- вписанные, то $A_1, A_2,B_1,B_2,C_1,C_2$ лежат на одной окружности.
+                \end{lemma}
+
+                По \cref{lem:3consycle} утверждение верно.
+            }
     \end{enumerate}
     
     \item Углы $A$ и $C$ четырехугольника $ABCD$ равны. Докажите, что середина отрезка $AC$ и проекции $D$ на прямые $AB$, $BC$ и $AC$ концикличны.
+        
+        \solution{
+            \begin{definition}[Изогональное сопряжение в треугольнике]\label{def:isogonalconjecture}
+                Изогональным сопряжением в треугольнике $ABC$ называется преобразование плоскости (проективной) $\mu: P \to Q: \angle ABP = \angle CBQ, \angle BAP = \angle CAQ, \angle BCP = \angle ACQ.$
+            \end{definition}
+
+            Сделаем изогональное сопряжение точки $D$ в треугольнике $ABC$, тогда по \cref{def:isogonalconjecture} $D \to D': \angle ABD = \angle CBD', \angle BAD = \angle CAD', \angle BCD = \angle ACD'$. 
+            $\angle BCD = \angle BAD \implies ACD' = \angle CAD'$, значит $D'$ лежит на серединном перпендикуляре к отрезку  $AC$.
+
+            По \cref{th:pedalcircle} проекции точки $D$ и проекции точки $D'$ на стороны треугольника $ABC$ концекличны, а проекции точки $D'$ на $AC$ -- это ее середина.
+        }
 \end{enumerate}
