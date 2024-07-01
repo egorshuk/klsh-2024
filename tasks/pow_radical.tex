@@ -1,7 +1,64 @@
 \begin{enumerate}[resume*]
     \item Докажите, что высоты треугольника конкурентны. \texttt{0\_0} \wishlisted
+
+        \solution{
+            Пусть $H_a$, $H_b$, $H_c$ -- основания высот треугольника $ABC$ из вершин $A$, $B$ и $C$ соответственно.
+
+            Четырехугольники $ABH_aH_b$, $ACH_aH_c$ и $BCH_bH_c$ -- вписанные. По \cref{th:radcenter} прямые $AH_a$, $BH_b$, $CH_c$ конкурентны.
+         }
+
     \item Окружность делит каждую из сторон треугольника на три равные части. Докажите, что этот треугольник -- равносторонний. \wishlisted
+
+        \solution{
+            Пусть окружность высекате на сторонах $AB$, $AC$ и $BC$ треугольника $ABC$ отрезки $CC_1, BB_1, AA_1$. 
+
+            \begin{equation}
+                \begin{cases}
+                    AB_2 = B_1B_2 = B_1C &= b \\
+                    AC_1 = C_1C_2 = BC_2 &= c \\
+                    BA_1 = A_1A_2 = A_2C &= a
+                \end{cases}
+            \end{equation}
+
+            Т.к. $A_1A_2B_1B_2$ -- вписанный, то 
+            \begin{equation}\label{eq:34.2}
+                \begin{split}
+                    \pow(C, (A_1A_2B_1B_2)) = CA_1 \cdot CA_2 = CB_1 \cdot CB_2 \implies\\
+                    \implies c \cdot 2c = b \cdot 2b \implies c = b \implies AC = BC.
+                \end{split}
+            \end{equation}
+
+            Т.к. $A_1A_2C_1C_2$ -- вписанный, то
+            \begin{equation}\label{eq:34.3}
+                \begin{split}
+                    \pow(B, (A_1A_2C_1C_2)) = BA_1 \cdot BA_2 = BA_1 \cdot BA_2 \implies\\
+                    \implies a \cdot 2a = c \cdot 2c \implies a = c \implies AB = AC.
+                \end{split}
+            \end{equation}
+
+            Из уравнений \labelcref{eq:34.2,eq:34.3} следует что \(
+            AB = AC = BC
+            \).
+        }
+
     \item Окружности ${\color{red}{\psi}}$ и ${\color{blue}{\omega}}$ вписаны в вертикальный угол $\angle {\color{red}{n}}{\color{blue}{m}}$, ${\color{red}{\psi}}$ касается прямой ${\color{red}{n}}$ в точке ${\color{red}{N}}$, а ${\color{blue}{\omega}}$ касается прямой ${\color{blue}{m}}$ в точке ${\color{blue}{M}}$. Докажите, что ${\color{red}{\psi}}$ и ${\color{blue}{\omega}}$ высекают на ${\color{red}{N}}{\color{blue}{M}}$ равные отрезки. \wishlisted
+
+        \solution{
+            Пусть окружность $\psi$ касается прямой $m$ в точке $Q$, а $\omega$ касается $n$ в точке $P$. Точка $R$ -- вторая точка пересечения прямой $MN$ с $\psi$. Точка $T$ -- вторая точка пересечения прямой $MN$ c $\omega$.
+
+            По \cref{cor:tangent_and_sector}
+            \begin{equation}
+                \begin{aligned}
+                    &\left\{\begin{aligned}
+                        &\pow(M, \psi) = MN \cdot MR = MQ^2\\
+                        &\pow(N, \omega) = NM \cdot NT = NP^2 \\
+                        &MQ = NP, \quad \text{symmetry} 
+                    \end{aligned}\right| \implies MN \cdot MR = NM \cdot NT\implies\\
+                    &\implies MR = NT \implies MR - MN = NT - MN \implies NR = MT.
+                \end{aligned}
+            \end{equation}
+            
+        }
     \item \task{ММО, 2013, 11.3}{Четырёхугольник $ABCD$ такой, что $AB = BC$ и $AD = DC$. Точки $K$, $L$ и $M$ -- середины отрезков $AB$, $CD$ и $AC$ соответственно. Перпендикуляр, проведённый из точки $A$ к прямой $BC$, пересекается с перпендикуляром, проведённым из точки $C$ к прямой $AD$, в точке $T$. Докажите, что прямые $KL \perp TM$.} \wishlisted
     \item Точка $D$ -- основание биссектрисы из точки $A$ треугольника $ABC$. Окружность $(ABD)$ повторно пересекает прямую $AC$ в точке $E$, а окружность $(ACD)$ повторно пересекает прямую $BC$ в точке $F$. Докажите, что $BF = CE$. \wishlisted
     \item Окружность $\omega$ проходит через вершины $A$ и $D$ равнобокой трапеции $ABCD$ так, что пересекает диагональ $BD$ и боковую сторону $CD$ в точках $P$ и $Q$ соответственно. Точки $P'$ и $Q'$ симметричны точкам $P$ и $Q$ относительно середин отрезков $BD$ и $CD$ соответственно. Докажите, что $B$, $C$, $P'$ и $Q'$ концикличны. \wishlisted
