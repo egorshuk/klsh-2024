@@ -144,5 +144,30 @@
         }
 
     \item \task{Теорема Дроз-Фарни}{Обозначим точкой $H$ -- ортоцентр треугольника $ABC$. Прямые $\ell$ и $t$ проходят через $H$ и $\ell \perp t$. Пусть $L_a$, $L_b$, $L_c$ пересечение $\ell$ с прямыми $BC$, $AC$ и $AB$ соответственно, точки $T_a$, $T_b$ и $T_c$ определяются аналогично. Докажите, что середины отрезков $T_aL_a$, $T_bL_b$, $T_cL_c$ коллинеарны.}
+
+        \solution{
+            Пусть точки $M_a, M_b, M_c$ -- середины отрезков $L_aT_a, L_bT_b, L_cT_c$ соответственно.
+
+            Отразим $H$ относительно сторон $AB, AC, BC$, получим точки $H_c, H_b, H_a$ соответственно. Все они по \cref{th:side reflect} лежат на описанной окружности $(ABC)$.
+
+            Построим на отрезках $L_aT_a, L_bT_b, L_cT_c$ окружности $\omega_a, \omega_b, \omega_c$ как на диаметрах соответственно.
+            Каждая из этих окружностей содержит в себе $H$. А также $H_a \in \omega_a, H_b \in \omega_b, H_c \in \omega_c$.
+
+            По \cref{lem:diff Shtainer} $L_aH_a \cap L_bH_b \cap L_cH_c \cap (ABC) = N \neq \varnothing$.
+
+            По \cref{th:miquel's theorem} для треугольника $L_aL_bN$ и точек $H, H_a, H_b$ 
+
+            \begin{equation}
+                \underbrace{(HL_aH_a)}_{\omega_a} \cap \underbrace{(HL_bH_b)}_{\omega_b} \cap \underbrace{(H_bH_aN)}_{(ABC)} = M \neq \varnothing.
+            \end{equation}
+
+            Аналогично для треугольников $L_aL_cN$ и $L_bL_cN$. Получаем, что 
+
+            \begin{equation}\label{eq:54.2}
+                \omega_a \cap \omega_b \cap \omega_b = \{H, M\}
+            .\end{equation} 
+
+            По \cref{eq:54.2,def:radaxis} окружности $\omega_a, \omega_b, \omega_c$ имеют общую радикальную ось $MH$. А их центры, точки $M_a, M_b, M_c$, лежат на одной прямой.
+        }
     
 \end{enumerate}
