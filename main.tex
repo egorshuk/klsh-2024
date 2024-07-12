@@ -1,5 +1,5 @@
 \documentclass[twoside]{article}
-\newcommand{\magic}{}
+\newcommand{\magic}{S}
 \usepackage{klsh24-styles}
 
 \begin{document}
@@ -128,6 +128,13 @@
 
 \newpage \pagenumbering{roman} 
 
+\fancyhead{} 
+\fancyhead[LE]{КЛШ-2024}
+\fancyhead[RO]{\href{https://t.me/standing_on_my_neck}{\color{red}{$\psi_c$}} $\perp$ \href{https://t.me/egorrshuk}{\color{blue}{$\omega_t$}}}
+
+\fancyfoot{}
+\fancyfoot[LE,RO]{\thepage}
+
 \section{Анкета}
 \sffamily \import{./}{survey.tex} \newpage
 
@@ -153,8 +160,9 @@
 \thispagestyle{empty} \import{./}{radioheadsong.tex}
 
 \if\magic S{
-\newpage \thispagestyle{empty} \import{./}{radioheadtable.tex} 
-
+        \setlength{\tabcolsep}{14pt}
+        \renewcommand{\arraystretch}{2}
+        \newpage \thispagestyle{empty} \import{./}{radioheadtable.tex} 
 }\else{}\fi
 
 \end{document}
