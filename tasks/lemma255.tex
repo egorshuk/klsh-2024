@@ -43,7 +43,7 @@
 
                     Пусть точка $P$ -- основание перпендикуляра из $I_a$ на $BP$. А точка $Q$ -- пересечение $BP$ c $AC$.
                     
-                    Тогда по \cref{th:simson's line} $P, N, M$ колинеарны, если $BQCI_a$ -- вписанный.
+                    Тогда по \cref{th:simson's line} $P, N, M$ коллинеарны, если $BQCI_a$ -- вписанный.
 
                     По \cref{th:angle_ex_bisector} $\angle BI_aC = 90^\circ - \frac{\angle BAC}{2}$. Но и $\angle BQA = 90^\circ - \frac{\angle BAC}{2}$.
                     Тогда по обратной \cref{lem:concycle} $BQCI_a$ -- вписанный.
@@ -54,7 +54,7 @@
                 \solution{
                     Пусть точка $P$ -- основание перпендикуляра из $C$ на $BI_a$. А точка $Q$ -- пересечение $CP$ с $AB$.
 
-                    Тогда по \cref{th:simson's line} $P, N, M$ колинеарны, если $AQI_aC$ -- вписанный.
+                    Тогда по \cref{th:simson's line} $P, N, M$ коллинеарны, если $AQI_aC$ -- вписанный.
 
                     Заметим, что $BP$ -- серединный перпендикуляр к отрезку $QC$, тогда $I_aQ = I_aC$.
                     Тогда по обратной \cref{lem:trillium} $AQI_aC$ -- вписанный.
@@ -64,6 +64,12 @@
 
     \item В равнобедренном треугольнике $ABC$ $(AB = BC)$ средняя линия, параллельная стороне $BC$ пересекается со вписанной окружностью в точке $D$, не лежащей на $AC$. Докажите, что касательная к окружности в точке $D$ пересекается с биссектрисой угла $C$ на стороне $AB$. 
 
+        \solution{
+            Пусть точки $M, N$ -- середины сторон $AC, AB$ соответствено. Точка $I$ -- центр вписанной окружности. Точка $E$ -- пересечение $MN$ и $IC$. Точки $K, L$ -- точки касания вписанной окружности со сторонами $ AB, BC$ соответственно, точки $P, Q$ -- точки пересечения касательной из точки $D$ с этими же сторонами. 
+            
+            По \cref{lem:255} Точка $E$ лежит на $KL \parallel AC$, значит $P, E, I$ коллинеарны.
+        }
+
     \item В треугольнике $ABC$ точки $A_c$, $B_c$, $C_c$ -- точки касания прямых $BC$, $AC$ и $AB$ с вневписанной окружностью $\omega_c$ (с центром в $I_c$). Точки $A_b$, $B_b$, $C_b$ определяются аналогично.
        
     \begin{equation*}
@@ -71,13 +77,28 @@
             B_1 &= A_cC_c \cap A_bC_b \\
             C_1 &= A_bB_b \cap A_cB_c \\
             A_1 &= A_bB_b \cap A_cC_c \\
-            A_2 &= A_cB_c \cap A_bC_B
+            A_2 &= A_cB_c \cap A_bC_b
         \end{cases}
     \end{equation*}
 
     \begin{enumerate}
         \item Докажите, что точки $A$, $B_1$, $C_1$, $I_b$, $I_c$ коллинеарны.
 
+            \solution{
+                Докажем для точки $B_1$. Пусть точка $X$ -- пересечение $A_cC_c$ с $AI_b$. По \cref{lem:ex255 complex} $AXC = 90^\circ$. По обратной \cref{lem:ex255 simple} $\angle AXB = 90^\circ \implies X \in A_bC_b \implies X \equiv B_1$.
+                Аналогично для точки $C_1$.
+            }
+
         \item Докажите, что \(A_1A_2 \perp BC\).
+
+            \solution{
+                Докажем, что $\angle A_cB_1A_b$ -- прямой.
+                $AC_bB_1B_b$ -- дельтоид, тогда $\angle C_bB_bB_1 = \angle B_bC_bB_1 = \angle AB_1A_c = \alpha$. 
+
+                По \cref{lem:ex255 simple} $\angle AB_1C = 90^\circ \implies CB_1\perp AB_1 \implies C_bB_b \parallel CB_1 \implies \implies CB_1A_b = \alpha.$
+                Тогда $\angle A_cB_1A_b = \angle AB_1C - \angle AB_1A_c + \angle CB_1A_b = \angle AB_1C - \alpha + \alpha = 90^\circ$.
+
+                Аналогично $A_bC_1A_c$ -- прямой. Тогда в треугольнике $A_bA_1A_c$ точка $A_2$ -- ортоцентр. Отсюда и следует, что $A_1A_2 \perp A_bA_c \equiv BC$.
+            }
     \end{enumerate}
 \end{enumerate}
