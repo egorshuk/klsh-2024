@@ -1,0 +1,312 @@
+\documentclass[12pt, twoside]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage{amsmath, amsfonts, amssymb, arcs}
+\usepackage{geometry, graphicx, hyperref, fancyhdr, enumitem, indentfirst, multicol}
+\usepackage[english, russian]{babel}
+
+\geometry{
+	a4paper,
+	right = 1cm,
+	left = 1cm,
+	top = 2cm,
+	bottom = 2 cm,
+	footnotesep = 5mm,
+}
+\setlength{\headheight}{16pt}
+\interfootnotelinepenalty=10000
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=red,
+	urlcolor=blue,
+	pdftitle={Топ-5 теорем, которые не помогут построить дом},
+	pdfauthor={Лунёв Егор}
+}
+
+\pagestyle{fancy}
+\fancyhead{} 
+\fancyhead[L]{КЛШ-2024}
+\fancyhead[R]{\href{https://t.me/standing_on_my_neck}{\color{red}{$\psi_c$}} $\perp$ \href{https://t.me/egorrshuk}{\color{blue}{$\omega_t$}}}
+
+\fancyfoot{}
+\fancyfoot[C]{\thepage}
+\setlength{\tabcolsep}{12pt}
+\renewcommand{\arraystretch}{1.4}
+\setlength{\arrayrulewidth}{0.5mm}
+
+
+\setlength{\columnsep}{1cm}
+\setlength{\columnseprule}{1pt}
+\def\columnseprulecolor{\color{blue}}
+
+\newcommand{\task}[2]{\texttt{(#1)} #2}
+
+\let\ch\undefined
+\renewcommand{\labelenumii}{(\alph{enumii})}
+\counterwithin*{footnote}{page}
+\newcommand{\frule}[2]{\noindent \textcolor{red}{\rule{#1\textwidth}{0.5pt}}\textcolor{blue}{\rule{#2\textwidth}{0.5pt}}}
+\renewcommand{\footnoterule}{\vspace{1mm}\frule{0.247}{0.153}\vspace{1mm}}
+\newcounter{wishlist}
+\newcommand{\wishlisted}{\hfill{$\bigcirc$}\stepcounter{wishlist}}
+
+\newlist{tasks}{itemize}{2}
+
+\setlist[tasks, 1]{
+	label=\color{red}$\heartsuit$
+}
+
+\usepackage[inline]{asymptote}
+\begin{asydef}
+	settings.outformat = "pdf";
+	import geometry;
+\end{asydef}
+
+\begin{document}
+	
+	\begin{center}
+		
+		\Large
+		\textbf{Подборка красивых задач для ВИПа}
+		\large
+		\vspace{5mm}
+		
+		Топ-5 теорем, которые не помогут построить дом
+		
+		\vspace{5mm}
+		
+		Лунёв Егор (\href{https://t.me/egorrshuk}{\texttt{@egorrshuk}})
+		
+		\vspace{5mm}
+	\end{center}
+	
+	\begin{multicols}{2}
+		\begin{tasks}
+			\item \task{Теорема об изогональном сопряжении}{Чевианы $AA_1$, $BB_1$, $CC_1$ треугольника $ABC$ пересекаются в одной точке. Докажите, что чевианы, симметричные им относительно биссектрис соответствующих углов, тоже пересекаются в одной точке. \footnote{Рассмотрите педальный треугольник этой точки.}}
+			
+			\begin{center}
+				\begin{asy}
+				size(8cm);
+				
+				triangle t = triangleabc(18.5, 15, 19.5);
+				draw(t, linewidth(1.4*bp));
+				point P = 0.47*t.B+0.3*(t.C-t.B); 
+				point Q = isogonalconjugate(t, P);
+				
+				segment pa = segment(t.VA, P); draw(pa, blue);
+				segment pb = segment(t.VB, P); draw(pb, blue); 
+				segment pc = segment(t.VC, P); draw(pc, blue);
+				
+				segment qa = segment(t.VA, Q); draw(qa, red+dashed);
+				segment qb = segment(t.VB, Q); draw(qb, red+dashed); 
+				segment qc = segment(t.VC, Q); draw(qc, red+dashed);
+				
+				markangle(n = 1, line(pa), line(t.AC), radius=1.3cm, blue);
+				markangle(n = 1, line(t.AB), line(qa), radius=1cm, red);
+				
+				markangle(n = 2, rotate(180)*line(t.AC), line(pc), radius=1.3cm, blue);
+				markangle(n = 2, line(qc), line(t.BC), radius=1cm, red);
+				
+				markangle(n = 3, line(t.BC), line(qb), radius=1.3cm, red);
+				markangle(n = 3, line(pb), line(t.AB), radius=1.4cm, blue);
+				
+				dot(P, red+4);
+				dot(Q, blue+4);
+				\end{asy}
+			\end{center}
+			
+			\item Окружности ${\color{red}{\psi}}$ и ${\color{blue}{\omega}}$ вписаны в вертикальный угол $\angle {\color{red}{n}}{\color{blue}{m}}$, ${\color{red}{\psi}}$ касается прямой ${\color{red}{n}}$ в точке ${\color{red}{N}}$, а ${\color{blue}{\omega}}$ касается прямой ${\color{blue}{m}}$ в точке ${\color{blue}{M}}$. Докажите, что ${\color{red}{\psi}}$ и ${\color{blue}{\omega}}$ высекают на ${\color{red}{N}}{\color{blue}{M}}$ равные отрезки. 
+			
+			\begin{center}
+				\begin{asy}
+				size(8cm);
+				
+				circle psi = circle(origin(), 1); draw(psi, red);
+				
+				point O = (-2, -1); 
+				
+				line[] tangents = tangents(psi, O);
+				draw(tangents[0], red);
+				point N = intersectionpoints(tangents[0], psi)[0];
+				
+				
+				point sdf = angpoint(psi, 90); 
+				
+				point Ns = scale(0.6, O)*N; 
+				point sdfs = scale(0.6, O)*sdf;
+				
+				circle omega = circle(Ns, sdfs); draw(omega, blue);
+				
+				draw(tangents[1], blue);
+				
+				point M = intersectionpoints(tangents[1], omega)[0];
+				
+				line mn = line(N, M);
+				
+				point P = intersectionpoints(psi, mn)[1]; 
+				point Q = intersectionpoints(omega, mn)[0]; 
+				
+				draw(M--P, dashed,StickIntervalMarker(1, 1, size=7));
+				draw(N--Q, dashed,StickIntervalMarker(1, 1, size=7));
+				draw(P--Q, dashed);
+				
+				
+				
+				dot(P);
+				dot(Q);
+				dot(M, blue);
+				dot(N, red);
+				
+				
+				draw(box((-1.6, 0),(0, 1)), invisible);
+				\end{asy}
+			\end{center}
+			
+			\item \task{Теорема Гаусса-Боденмиллера}{Докажите, что прямая Гаусса \footnote{Прямой Гаусса полного четырёхсторонника называется прямая, проходящая через середины трех его диагоналей.} перпендикулярна оси Обера.}
+			
+			\item \task{Прямая Штейнера}{Пусть $P$ -- произвольная точка на описанной окружности треугольника $ABC$. Точки $P_a$, $P_b$, $P_c$ -- симметричны $P$ относительно прямых $BC$, $AC$ и $AB$ соответственно. Докажите что, точки $P_a$, $P_b$, $P_c$, $H$ коллинеарны.}
+			
+			\begin{center}
+				\begin{asy}
+				size(8cm); 
+				triangle t = triangleabc(11.1, 12.3, 11); draw(t, linewidth(bp));
+				
+				circle omega = circle(t.A, t.B, t.C); draw(omega);
+				
+				point H = orthocentercenter(t); 
+				
+				point Ha = foot(t.BC);
+				point Hb = foot(t.VB);
+				point Hc = foot(t.VC);
+				draw(t.A--Ha, gray);
+				draw(t.B--Hb, gray);
+				draw(t.C--Hc, gray);
+				perpendicularmark(t.AB, altitude(t.AB), size=7;
+				perpendicularmark(reverse(t.AC), altitude(t.AC), size=7);
+				perpendicularmark(t.BC, altitude(t.BC), size=7);
+				
+				point P = angpoint(omega, -70); 
+				point Pa = reflect(t.BC)*P;
+				point Pb = reflect(t.AC)*P; 
+				point Pc = reflect(t.AB)*P; 
+				
+				draw(P--Pa, dashed+blue, StickIntervalMarker(2, 2, size=7));
+				draw(P--Pb, dashed+blue, StickIntervalMarker(2, 3, size=7));
+				draw(P--Pc, dashed+blue, StickIntervalMarker(2, 1, size=7));
+				
+				
+				
+				
+				dot(Pa);
+				dot(Pb);
+				dot(Pc);
+				dot(P, black+4);
+				dot(H, black+4);
+				\end{asy}
+			\end{center}
+			
+			\item \task{Олимпиада им. И.Ф. Шарыгина, 2021, 8-9.6, устный тур}{\\В треугольнике $ABC$, точка $M$ -- середина стороны $BC$, точка $H$ -- ортоцентр. Биссектриса угла $A$ пересекает отрезок $HM$ в точке $T$. Окружность построенная на отрезке $AT$, как на диаметре, пересекает стороны $AB$ и $AC$ в точках $X$ и $Y$. Докажите, что точки $X$, $Y$ и $H$  коллинеарны.}
+			
+			\begin{center}
+				\begin{asy}
+				size(8cm);
+				triangle t = triangleabc(9.4, 6.7, 9.1);
+				draw(t, linewidth(bp)); 
+				
+				point M = midpoint(t.AB);
+				draw(t.A--t.B, StickIntervalMarker(2, 1, size=10));
+				point H = orthocentercenter(t); 
+				
+				point Ha = foot(t.BC);
+				point Hb = foot(t.VB);
+				point Hc = foot(t.VC);
+				draw(t.A--Ha, gray);
+				draw(t.B--Hb, gray);
+				draw(t.C--Hc, gray);
+				perpendicularmark(t.AB, altitude(t.AB), size=10);
+				perpendicularmark(reverse(t.AC), altitude(t.AC), size=10);
+				perpendicularmark(t.BC, altitude(t.BC), size=10);
+				
+				draw(H--M);
+				
+				line b = bisector(t.VC); 
+				point T = intersectionpoint(b, line(H,M)); 
+				draw(t.C--T);
+				
+				markangle(n = 1, t.A, t.C, T, radius = 30, blue);
+				markangle(n = 1, T, t.C, t.B, radius = 25, blue);
+				
+				point G = midpoint(segment(t.VC, T));
+				
+				circle omega = circle(G, length(segment(t.VC, G)));
+				draw(omega, red);
+				
+				point P = intersectionpoints(omega, t.AC)[0];
+				point Q = intersectionpoints(omega, t.BC)[0];
+				
+				
+				draw(line(P,Q), dashed+blue);
+				dot(G, filltype=FillDraw(fillpen=white, drawpen=black), black+0.7);
+				dot(P);
+				dot(Q);
+				dot(T);
+				dot(H, black+4);
+				dot(M);
+				\end{asy}
+			\end{center}
+			
+			\item \task{Теорема Дроз-Фарни}{Обозначим точкой $H$ -- ортоцентр треугольника $ABC$. Прямые $\ell$ и $t$ проходят через $H$ и $\ell \perp t$. Пусть $L_a$, $L_b$, $L_c$ пересечение $\ell$ с прямыми $BC$, $AC$ и $AB$ соответственно, точки $T_a$, $T_b$ и $T_c$ определяются аналогично. Докажите, что середины отрезков $T_aL_a$, $T_bL_b$, $T_cL_c$ коллинеарны.}
+			
+			\begin{center}
+				\begin{asy}
+				size(8cm);
+				triangle tri = triangleabc(8, 7, 8.5);
+				point H = orthocentercenter(tri); 
+				
+				point Ha = foot(tri.BC);
+				point Hb = foot(tri.VB);
+				point Hc = foot(tri.VC);
+				draw(tri.A--Ha, gray);
+				draw(tri.B--Hb, gray);
+				draw(tri.C--Hc, gray);
+				perpendicularmark(tri.AB, altitude(tri.AB), size=7);
+				perpendicularmark(reverse(tri.AC), altitude(tri.AC), size=7);
+				perpendicularmark(tri.BC, altitude(tri.BC), size=7);
+				
+				line t = line(H, 27); draw(t, red); line l = line(H, 117); draw(l, blue);
+				
+				point T_a = intersectionpoint(t, tri.BC);
+				point T_b = intersectionpoint(t, tri.AC); 
+				point T_c = intersectionpoint(t, tri.BA); 
+				
+				point L_a = intersectionpoint(l, tri.BC); 
+				point L_b = intersectionpoint(l, tri.AC); 
+				point L_c = intersectionpoint(l, tri.BA); 
+				
+				draw(line(tri.VA, T_c));
+				draw(line(tri.VC, L_a));
+				draw(segment(tri.VA, tri.VC));
+				
+				point M_a = midpoint(segment(L_a, T_a));
+				point M_b = midpoint(segment(L_b, T_b));
+				point M_c = midpoint(segment(L_c, T_c));
+				
+				draw(segment(L_a, T_a), StickIntervalMarker(2, 2, size=8));
+				draw(segment(L_b, T_b), StickIntervalMarker(2, 1, size=6));
+				draw(segment(L_c, T_c),StickIntervalMarker(2, 3, size=8));
+				
+				perpendicularmark(l, t, size=8, quarter=3);
+				
+				draw(line(M_a, M_c), dashed);
+				
+				dot(T_a); dot(T_b); dot(T_c);
+				dot(L_a); dot(L_b); dot(L_c);
+				dot(M_a, black+4); dot(M_b, black+4); dot(M_c, black+4);
+				dot(H, 4+black);
+				
+				draw(box((-3.7, -1), (9.5, 12.5)), invisible);
+				\end{asy}
+			\end{center}
+		\end{tasks}
+	\end{multicols}
+\end{document}

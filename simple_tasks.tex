@@ -1,0 +1,162 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage{amsmath, amsfonts, amssymb, arcs}
+\usepackage{geometry, graphicx, hyperref, fancyhdr, enumitem, indentfirst, multicol}
+\usepackage[english, russian]{babel}
+
+\geometry{
+    a4paper,
+    right = 1cm,
+    left = 1cm,
+    top = 2cm,
+    bottom = 2 cm,
+    footnotesep = 5mm,
+}
+\setlength{\headheight}{16pt}
+\interfootnotelinepenalty=10000
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=red,
+    urlcolor=blue,
+    pdftitle={Топ-5 теорем, которые не помогут построить дом},
+    pdfauthor={Лунёв Егор}
+}
+
+\pagestyle{fancy}
+\fancyhead{} 
+\fancyhead[L]{КЛШ-2024}
+\fancyhead[R]{\href{https://t.me/standing_on_my_neck}{\color{red}{$\psi_c$}} $\perp$ \href{https://t.me/egorrshuk}{\color{blue}{$\omega_t$}}}
+
+\fancyfoot{}
+\fancyfoot[C]{\thepage}
+\setlength{\tabcolsep}{12pt}
+\renewcommand{\arraystretch}{1.4}
+\setlength{\arrayrulewidth}{0.5mm}
+
+
+\setlength{\columnsep}{1cm}
+\setlength{\columnseprule}{1pt}
+\def\columnseprulecolor{\color{blue}}
+
+\newcommand{\task}[2]{\texttt{(#1)} #2}
+
+\let\ch\undefined
+\renewcommand{\labelenumii}{(\alph{enumii})}
+\counterwithin*{footnote}{page}
+\newcommand{\frule}[2]{\noindent \textcolor{red}{\rule{#1\textwidth}{0.5pt}}\textcolor{blue}{\rule{#2\textwidth}{0.5pt}}}
+\renewcommand{\footnoterule}{\vspace{1mm}\frule{0.247}{0.153}\vspace{1mm}}
+\newcounter{wishlist}
+\newcommand{\wishlisted}{\hfill{$\bigcirc$}\stepcounter{wishlist}}
+
+\newlist{tasks}{itemize}{2}
+
+\setlist[tasks, 1]{
+    label=$\bigcirc$
+}
+
+\usepackage[inline]{asymptote}
+\begin{asydef}
+    settings.outformat = "pdf";
+    import geometry;
+\end{asydef}
+
+\begin{document}
+
+    \begin{center}
+        
+        \Large
+        \textbf{Задачки попроще}
+        \large
+        \vspace{5mm}
+        
+        НТН
+        
+        \vspace{5mm}
+        
+        Лунёв Егор (\href{https://t.me/egorrshuk}{\texttt{@egorrshuk}})
+
+        \vspace{5mm}
+    \end{center}
+    \begin{multicols*}{2}
+        [В данных задачах даны базовые леммы, теоремы, свойства, которые стоит знать и использовать при решении задач по геометрии. Если для вас задачи с моего факультатива слишком сложны -- решайте это.]
+    
+    \begin{tasks}
+        \item \task{Лемма об угле между касательной и хордой}{Описанная окружность треугольника $(ABC)$ касается прямой $BD$. Докажите, что $\angle CBD = \angle CAB$.}
+
+        \begin{center}
+            \begin{asy}
+                size(8cm, 5cm);
+                triangle t = triangleabc(5, 3, 3.5); 
+                draw(t); 
+
+                circle omega = circle(t.A, t.B, t.C); draw(omega, linewidth(bp));
+
+                line k = tangent(omega, t.VC); draw(k, blue);
+                markangle(n = 1, k, line(t.AC), radius=20, red);
+
+                markangle(t.C, t.B, t.A, radius=20, red);
+
+                draw(box((-1.5, -1), (1, 1)), invisible);
+            \end{asy}
+        \end{center}
+
+        \item Биссектриса угла $A$ треугольника $ABC$ пересекает его описанную окружность в точке $L$. Докажите, что $BL = CL$.
+
+        \begin{center}
+            \begin{asy}
+                size(8cm, 5cm);
+                triangle t = triangleabc(11.1, 12.3, 11);
+                draw(t, linewidth(bp)); 
+
+                circle omega = circle(t.A, t.B, t.C); draw(omega);
+
+                line b = bisector(t.VC); 
+                point L = intersectionpoints(b, omega)[0]; dot(L);
+                draw(t.C--L); draw(t.A--L, dashed+blue, StickIntervalMarker(1, 1, size=7)); draw(t.B--L, dashed+blue, StickIntervalMarker(1, 1, size=7));
+
+                markangle(n = 1, t.A, t.C, L, radius = 20, red);
+                markangle(n = 1, L, t.C, t.B, radius = 25, red);
+            \end{asy}
+        \end{center}
+
+        \item Докажите, что сумма углов выпуклого $n$-угольника равна $180^\circ (n-2)$.
+
+        \item Докажите,что если $\overset{\frown}{AB}$ и $\overset{\frown}{CD}$ -- меньшие дуги окружности $\omega$, тогда если $P$ -- точка пересечения $AC$ и $BD$, то \[\angle APB = \frac{\overset{\frown}{AB} + \overset{\frown}{CD}}{2}.\]
+
+        \item Докажите, что если биссектрисы углов $B$ и $C$ треугольника $ABC$ пересекаются в точке $I$, то \[ \angle BIC = 90^\circ + \frac 1 2 \angle BAC.\]
+
+        \item Докажите, что вершины $B$ и $C$ треугольника $ABC$ равноудалены от прямой, содержащей медианы $AM$.
+
+        \begin{center}
+            \begin{asy}
+                size(8cm, 5cm);
+                triangle t = triangleabc(9, 11, 10); draw(t, linewidth(bp)); 
+
+                point M = midpoint(t.AB);
+                draw(t.A--t.B, StickIntervalMarker(2, 1, size=7));
+                line m = line(t.C, M); draw(m);
+
+                point Pa = projection(m)*t.A; 
+                point Pb = projection(m)*t.B; 
+
+                draw(Pa--t.A, blue+dashed, StickIntervalMarker(1, 2, size=5)); draw(Pb--t.B, blue+dashed, StickIntervalMarker(1, 2, size=5));
+
+                perpendicularmark(line(t.VA, Pa), m, quarter = 2, red, size=7);
+                perpendicularmark(line(t.VB, Pb), m, quarter = 2, red, size=7);
+
+                dot(Pa);
+                dot(Pb);
+                dot(M);
+                draw(box((-1, -2), (0,0)), invisible);
+            \end{asy}
+        \end{center}
+        %TODO : same task
+
+        \item \task{Теорема о биссектрисе}{В треугольнике $ABC$ проведена биссектриса $AL$. Докажите, что \[\frac{BL}{CL} = \frac{AB}{AC}.\]} 
+
+        \item \task{Теорема о внешней биссектрисе}{В треугольнике $ABC$ проведена внешняя биссектриса $AL$. Докажите, что \[\frac{BL}{CL} = \frac{AB}{AC}.\]}
+    \end{tasks}
+    \end{multicols*}
+\end{document}

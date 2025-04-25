@@ -1,0 +1,107 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage{amsmath, amsfonts, amssymb, arcs}
+\usepackage{geometry, graphicx, hyperref, enumitem, indentfirst, authblk}
+\usepackage[english, russian]{babel}
+
+\geometry{
+    a4paper,
+    right = 1cm,
+    left = 1cm,
+    top = 2cm,
+    bottom = 2 cm,
+    footnotesep = 5mm,
+}
+\setlength{\headheight}{16pt}
+\interfootnotelinepenalty=10000
+
+\renewcommand{\labelenumi}{(\alph{enumi})}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=red,
+    urlcolor=blue,
+    pdftitle={Зондерская задача},
+    pdfauthor={Лунёв Егор}
+}
+
+
+\usepackage[inline]{asymptote}
+\begin{asydef}
+    settings.outformat = "pdf";
+    import geometry;
+\end{asydef}
+
+\date{До 1 июля}
+\title{Зондерская задача по планиметрии}
+\author[1]{Егор Лунёв}
+\affil[1]{Зондер комнады $\tau$, cеминарист у Тони Шарковской на \texttt{У1}, семинарист у Яна Шапиро на \texttt{У2}}
+
+\begin{document}
+
+    \clearpage\maketitle
+    \thispagestyle{empty}
+    
+    В треугольнике $ABC$, точка $M$ -- середина стороны $BC$, точка $H$ -- ортоцентр\footnote{Точка пересечения высот.}. Биссектриса угла $A$ пересекает отрезок $HM$ в точке $T$. Окружность построенная на отрезке $AT$, как на диаметре, пересекает стороны $AB$ и $AC$ в точках $P$ и $Q$. Докажите, что точки $P$, $Q$ и $H$ коллинеарны\footnote{Лежат на одной прямой.}.
+
+    \vspace{5mm}
+        
+    \emph{Подсказка: воспользуйтесь фактом о прямой Симсона-Уолесса.}
+
+    \vspace{1cm}
+
+    \begin{figure}[h]
+        \centering
+        \begin{asy}
+            size(15cm, 13cm);
+            triangle t = triangleabc(9.4, 6.7, 9.1);
+            draw(t, linewidth(bp)); 
+
+            point M = midpoint(t.AB);
+            draw(t.A--t.B, StickIntervalMarker(2, 1, size=10));
+            point H = orthocentercenter(t); 
+
+            point Ha = foot(t.BC);
+            point Hb = foot(t.VB);
+            point Hc = foot(t.VC);
+            draw(t.A--Ha, gray);
+            draw(t.B--Hb, gray);
+            draw(t.C--Hc, gray);
+            perpendicularmark(t.AB, altitude(t.AB), size=12);
+            perpendicularmark(reverse(t.AC), altitude(t.AC), size=12);
+            perpendicularmark(t.BC, altitude(t.BC), size=12);
+
+            draw(H--M);
+
+            line b = bisector(t.VC); 
+            point T = intersectionpoint(b, line(H,M)); 
+            draw(t.C--T);
+
+            markangle(n = 1, t.A, t.C, T, radius = 30);
+            markangle(n = 1, T, t.C, t.B, radius = 40);
+
+            point G = midpoint(segment(t.VC, T));
+
+            circle omega = circle(G, length(segment(t.VC, G)));
+            draw(omega);
+            
+            point P = intersectionpoints(omega, t.AC)[0];
+            point Q = intersectionpoints(omega, t.BC)[0];
+
+
+            draw(line(P,Q), dashed);
+
+            dot("$B$", t.A, dir(200), black+1);
+            dot("$A$", t.C, dir(140), black+1);
+            dot("$C$", t.B, dir(40), black+1);
+            dot(G, filltype=FillDraw(fillpen=white, drawpen=black), black+1);            
+            dot("$P$", P, dir(-135), black+5);
+            dot("$Q$", Q, dir(50), black+5);
+            dot("$T$", T, dir(-100), black+5);
+            dot("$H$", H, dir(120), black+5);
+            dot("$M$", M, dir(-80), black+5);
+        \end{asy}
+    \end{figure}
+
+\end{document}

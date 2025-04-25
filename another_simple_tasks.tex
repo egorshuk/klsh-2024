@@ -1,0 +1,222 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage{amsmath, amsfonts, amssymb, arcs}
+\usepackage{geometry, graphicx, hyperref, fancyhdr, enumitem, indentfirst, multicol}
+\usepackage[english, russian]{babel}
+
+\geometry{
+    a4paper,
+    right = 1cm,
+    left = 1cm,
+    top = 2cm,
+    bottom = 2 cm,
+    footnotesep = 5mm,
+}
+\setlength{\headheight}{16pt}
+\interfootnotelinepenalty=10000
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=red,
+    urlcolor=blue,
+    pdftitle={Топ-5 теорем, которые не помогут построить дом},
+    pdfauthor={Лунёв Егор}
+}
+
+\pagestyle{fancy}
+\fancyhead{} 
+\fancyhead[L]{КЛШ-2024}
+\fancyhead[R]{\href{https://t.me/standing_on_my_neck}{\color{red}{$\psi_c$}} $\perp$ \href{https://t.me/egorrshuk}{\color{blue}{$\omega_t$}}}
+
+\fancyfoot{}
+\fancyfoot[C]{\thepage}
+\setlength{\tabcolsep}{12pt}
+\renewcommand{\arraystretch}{1.4}
+\setlength{\arrayrulewidth}{0.5mm}
+
+
+\setlength{\columnsep}{1cm}
+\setlength{\columnseprule}{1pt}
+\def\columnseprulecolor{\color{blue}}
+
+\newcommand{\task}[2]{\texttt{(#1)} #2}
+
+\let\ch\undefined
+\renewcommand{\labelenumii}{(\alph{enumii})}
+\counterwithin*{footnote}{page}
+\newcommand{\frule}[2]{\noindent \textcolor{red}{\rule{#1\textwidth}{0.5pt}}\textcolor{blue}{\rule{#2\textwidth}{0.5pt}}}
+\renewcommand{\footnoterule}{\vspace{1mm}\frule{0.247}{0.153}\vspace{1mm}}
+\newcounter{wishlist}
+\newcommand{\wishlisted}{\hfill{$\bigcirc$}\stepcounter{wishlist}}
+
+\newlist{tasks}{itemize}{2}
+
+\setlist[tasks, 1]{
+    label=$\bigcirc$
+}
+
+\usepackage[inline]{asymptote}
+\begin{asydef}
+    settings.outformat = "pdf";
+    import geometry;
+\end{asydef}
+
+\begin{document}
+
+    \begin{center}
+        
+        \Large
+        \textbf{Ещё задачек попроще}
+        \large
+        \vspace{5mm}
+        
+        НТН
+        
+        \vspace{5mm}
+        
+        Лунёв Егор (\href{https://t.me/egorrshuk}{\texttt{@egorrshuk}})
+
+        \vspace{5mm}
+    \end{center}
+    \begin{multicols}{2}
+    [
+        В прошлый раз довольно большой количество вас решало эти задачи, поэтому получайте еще!
+    ]
+        \begin{tasks}
+            \item Точки $A, B, C, D$ лежат на окружности. Точки $M , N , K, L$ -- середины дуг $AB, BC, CD, DA$ соответственно. Докажите, что $M K \perp N L$.
+
+            \begin{center}
+                \begin{asy}
+                    size(8cm, 6cm);
+                    circle omega = circle(origin(), 1); draw(omega, blue);
+
+                    point A = angpoint(omega, 200);
+                    point B = angpoint(omega, 144); 
+                    point C = angpoint(omega, 80); 
+                    point D = angpoint(omega, -20); 
+
+                    point M = angpoint(omega, 172);
+                    point N = angpoint(omega, 114);
+                    point K = angpoint(omega, 30);
+                    point L = angpoint(omega, -90);
+
+                    draw(A--B--C--D--A);
+                    
+                    draw(A--M, gray, StickIntervalMarker(1, 1, size=5));
+                    draw(B--M, gray, StickIntervalMarker(1, 1, size=5));
+                    draw(B--N, gray, StickIntervalMarker(1, 2, size=5));
+                    draw(C--N, gray, StickIntervalMarker(1, 2, size=5));
+                    draw(C--K, gray, StickIntervalMarker(1, 3, size=5));
+                    draw(D--K, gray, StickIntervalMarker(1, 3, size=5));
+                    draw(D--L, gray, StickIntervalMarker(1, 4, size=5));
+                    draw(A--L, gray, StickIntervalMarker(1, 4, size=5));
+
+                    draw(N--L, dashed+red);
+                    draw(M--K, dashed+red);
+
+                    perpendicularmark(line(M, K), line(N, L), blue);
+                    
+                    dot("$A$", A, dir(200));
+                    dot("$B$", B, dir(145));
+                    dot("$C$", C, dir(80));
+                    dot("$D$", D, dir(-20));
+
+                    dot("$M$", M, dir(172));
+                    dot("$N$", N, dir(114));
+                    dot("$K$", K, dir(30));
+                    dot("$L$", L, dir(-90));
+                \end{asy}
+            \end{center}
+
+            \item Продолжения биссектрис треугольника $ABC$ пересекают описанную окружность $(ABC)$ в точках $A_1, B_1, C_1$. Докажите, что высоты треугольника $A_1B_1C_1$ лежат на прямых $AA_1, BB_1, CC_1$.
+
+            \begin{center}
+                \begin{asy}
+                    size(8cm, 6cm);
+                    triangle t = triangleabc(7,8,9); draw(t, linewidth(bp)); label(t);
+
+                    circle omega = circle(t.A, t.B, t.C); draw(omega, blue);
+
+                    line ba = bisector(t.VA);
+                    line bb = bisector(t.VB);
+                    line bc = bisector(t.VC);
+
+                    point A1 = intersectionpoints(omega, ba)[1];
+                    point B1 = intersectionpoints(omega, bb)[1];
+                    point C1 = intersectionpoints(omega, bc)[0];
+
+                    draw(t.A--A1, gray);
+                    draw(t.B--B1, gray);
+                    draw(t.C--C1, gray);
+
+                    markangle(n=1, A1, t.A, t.C, radius = 25, blue); 
+                    markangle(n=1, t.B, t.A, A1, radius = 20, blue); 
+
+                    markangle(n=2, B1, t.B, t.A, radius = 25, blue); 
+                    markangle(n=2, t.C, t.B, B1, radius = 20, blue); 
+
+                    markangle(n=3, C1, t.C, t.B, radius = 25, blue); 
+                    markangle(n=3, t.A, t.C, C1, radius = 20, blue); 
+
+                    draw(A1--B1--C1--A1, red+dashed);
+
+                    perpendicularmark(line(A1, B1), bc, size=8, blue);
+                    perpendicularmark(line(B1, C1), ba, size=8, blue);
+                    perpendicularmark(line(A1, C1), bb, quarter=4, size=8, blue);
+
+
+                    dot("$A_1$", A1, dir(20));
+                    dot("$B_1$", B1, dir(130));
+                    dot("$C_1$", C1, dir(-90));
+                \end{asy}
+            \end{center}
+
+
+            \item В прямоугольном треугольнике $ABC$ с прямым углом при вершине $C$ катет $BC$ равен $a$, радиус вписанной окружности равен $r$. Вписанная окружность касается катета $AC$ в точке $D$. Найдите хорду, соединяющую точки пересечения окружности с прямой $BD$.
+
+            \item Диагонали $AC$ и $BD$ вписанного четырехугольника $ABCD$ взаимно перпендикулярны и пересекаются в точке $P$. Докажите, что прямая, проходящая через точку $P$ и середину стороны $AD$, перпендикулярна $BC$.
+
+            \begin{center}
+                \begin{asy}
+                    size(8cm, 6cm);
+
+                    circle omega = circle(origin(), 1); draw(omega, blue);
+                    
+                    point A = angpoint(omega, 160);
+                    point B = angpoint(omega, 100);
+                    point C = angpoint(omega, 20);
+                    point D = angpoint(omega, -100);
+
+                    draw(A--B--C--D);
+                    draw(A--C, gray);
+                    draw(B--D, gray);
+
+                    point P = intersectionpoint(line(A,C), line(B, D)); 
+
+                    perpendicularmark(line(A, C), line(B, D), red);
+
+
+                    point M = (A+D)/2; draw(A--D, StickIntervalMarker(2, 1, size=7));
+
+                    draw(line(M, P), dashed+blue);
+
+                    perpendicularmark(line(M, P), line(B,C), quarter=3, red);
+
+                    
+
+                    dot(M);
+                    dot("$P$", P, dir(-55));
+                    dot("$A$", A, dir(160));
+                    dot("$B$", B, dir(100));
+                    dot("$C$", C, dir(20));
+                    dot("$D$", D, dir(-100));
+                \end{asy}
+            \end{center}
+
+            \item Из точки $A$ проведены два луча, пересекающие данную окружность: один -- в точках $B$ и $C$, другой -- в точках $D$ и $E$. Известно, что $AB = 7$, $BC = 7$, $AD = 10$. Найдите $DE$.
+
+            \item На сторонах $AB$ и $CD$ квадрата $ABCD$ выбраны точки $P$ и $Q$ соответственно. Далее, на прямой $PQ$ выбрали точку $R$. Окружности $(APR)$ и $(CQR)$ вторично пересекаются в точке $T$. Докажите, что $T$ лежит на диагонале квадрата.
+        \end{tasks}
+    \end{multicols}
+\end{document}
